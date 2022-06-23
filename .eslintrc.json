@@ -27,9 +27,11 @@
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
   "rules": {
-    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/rules-of-hooks": "off",
     "react-hooks/exhaustive-deps": "warn",
-    "react-native/no-unused-styles": 2,
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars-experimental": "error",
+    "no-unused-vars": "off",
     "prettier/prettier": "error",
     "react/jsx-filename-extension": [
       1,
