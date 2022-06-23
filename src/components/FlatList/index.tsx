@@ -1,7 +1,12 @@
 import React, {useState} from 'react';
 import {FlatList} from 'react-native';
 import {IconButton} from 'react-native-paper';
-import {} from '../../screens/Home/style';
+import {useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
+import {StoreType} from '../../store';
+
+import {addToCart} from '../../store/cart/action';
+import {addToFav} from '../../store/favorite/action';
 import {
   ProductName,
   ProductPrice,
@@ -38,9 +43,16 @@ export const FlatListCategories = () => {
 };
 
 export const FlatListProducts = () => {
+  const dispatch = useDispatch();
+
+  const [itemToCart] = useState([{id: 0, ammount: 0}]);
+  const [favItem] = useState([{id: 0, isFavorite: false}]);
+
   const [image] = useState([
     {src: require('../../assets/alexa.jpg'), key: '1'},
   ]);
+
+  const {newItem} = useSelector((state: StoreType) => state.cartReducer);
 
   return (
     <SectionCards>
@@ -51,14 +63,22 @@ export const FlatListProducts = () => {
       />
       <SectionOption>
         <ActionButtons>
-          <IconButton icon="cart-plus" size={25} />
+          <IconButton
+            icon="cart-plus"
+            size={25}
+            onPress={() => dispatch(addToCart(1))}
+          />
         </ActionButtons>
         <ActionButtons>
-          <IconButton icon="heart-outline" size={25} />
+          <IconButton
+            icon="heart-outline"
+            size={25}
+            onPress={() => dispatch(addToFav(favItem))}
+          />
         </ActionButtons>
       </SectionOption>
       <SectionDetail>
-        <ProductName>Google Homme Pod</ProductName>
+        <ProductName>{newItem}</ProductName>
         <ProductDetail>
           <ProductPrice>$100,00</ProductPrice>
         </ProductDetail>
