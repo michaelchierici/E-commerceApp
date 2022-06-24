@@ -45,7 +45,6 @@ export const FlatListCategories = () => {
 export const FlatListProducts = () => {
   const dispatch = useDispatch();
 
-  const [itemToCart] = useState([{id: 0, ammount: 0}]);
   const [favItem] = useState([{id: 0, isFavorite: false}]);
 
   const [image] = useState([
@@ -66,7 +65,7 @@ export const FlatListProducts = () => {
           <IconButton
             icon="cart-plus"
             size={25}
-            onPress={() => dispatch(addToCart(1))}
+            onPress={() => dispatch(addToCart(Math.random(), 'alexa', 20, 1))}
           />
         </ActionButtons>
         <ActionButtons>
@@ -78,7 +77,7 @@ export const FlatListProducts = () => {
         </ActionButtons>
       </SectionOption>
       <SectionDetail>
-        <ProductName>{newItem}</ProductName>
+        <ProductName>{newItem.name}</ProductName>
         <ProductDetail>
           <ProductPrice>$100,00</ProductPrice>
         </ProductDetail>
