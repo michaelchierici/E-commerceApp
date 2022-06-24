@@ -1,9 +1,18 @@
 import {ADD_TO_CART, REMOVE_TO_CART} from '../cart/actionTypes';
 
-export function addToCart(newItem: any) {
+export interface newItem {
+  id: number;
+}
+
+export function addToCart(
+  id: any,
+  name: string,
+  price: number,
+  ammount: number,
+) {
   return {
     type: ADD_TO_CART,
-    payload: {newItem},
+    payload: {id, name, price, ammount},
   };
 }
 
