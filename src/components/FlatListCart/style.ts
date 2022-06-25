@@ -17,9 +17,10 @@ export const Cards = styled.View`
   border-radius: 20px;
   align-items: center;
   justify-content: space-between;
-  height: 13%;
+  height: 60px;
   width: 95%;
   flex-direction: row;
+  margin: 10px;
 `;
 
 export const ItemTitle = styled.Text`

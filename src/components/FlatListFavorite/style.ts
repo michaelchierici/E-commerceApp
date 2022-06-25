@@ -17,9 +17,10 @@ export const Cards = styled.View`
   border-radius: 20px;
   align-items: center;
   justify-content: space-between;
-  height: 13%;
+  height: 60px;
   width: 95%;
   flex-direction: row;
+  margin: 10px;
 `;
 
 export const ItemTitle = styled.Text`
@@ -37,16 +38,8 @@ export const ControlButtons = styled.View`
   justify-content: space-around;
   flex-direction: row;
 `;
-export const ButtonAdd = styled.TouchableOpacity`
-  width: 22px;
-  height: 22px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50px;
-  background-color: #fff;
-`;
 
-export const ButtonRemove = styled.TouchableOpacity`
+export const ButtonHeart = styled.TouchableOpacity`
   width: 22px;
   height: 22px;
   align-items: center;

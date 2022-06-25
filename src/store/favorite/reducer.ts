@@ -22,7 +22,7 @@ const favoriteReducer = (
       const favItem = action.payload;
       return {
         ...state,
-        favItem,
+        favItem: [...state.favItem, favItem],
       };
     }
     case REMOVE_TO_FAV: {

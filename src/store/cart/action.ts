@@ -15,15 +15,10 @@ export function setItemsLists(
   };
 }
 
-export function addToCart(
-  id: any,
-  name: string,
-  price: number,
-  ammount: number,
-) {
+export function addToCart(newItem: any[]) {
   return {
     type: ADD_TO_CART,
-    payload: {id, name, price, ammount},
+    payload: newItem,
   };
 }
 
