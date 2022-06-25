@@ -1,6 +1,6 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import NavigationBar from './src/components/Navigation';
+
 import TopBar from './src/components/TopBar';
 import Routes from './src/routes/';
 import Data from './src/hooks/data';
@@ -11,7 +11,6 @@ const App = () => {
     <Provider store={store}>
       <TopBar />
       <Routes />
-      <NavigationBar />
       <Data />
     </Provider>
   );

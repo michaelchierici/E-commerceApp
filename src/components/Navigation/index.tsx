@@ -3,7 +3,10 @@ import LinearGradient from 'react-native-linear-gradient';
 import {BottomButtons, CardButtons, Section} from './style';
 import {IconButton} from 'react-native-paper';
 
+import {useNavigation} from '@react-navigation/native';
+
 const NavigationBar = () => {
+  const navigation = useNavigation();
   return (
     <LinearGradient
       start={{x: 0, y: 0}}
@@ -12,13 +15,25 @@ const NavigationBar = () => {
       <Section>
         <CardButtons>
           <BottomButtons>
-            <IconButton icon="account-outline" size={30} />
+            <IconButton
+              icon={'home-outline'}
+              size={30}
+              onPress={() => navigation.navigate('Home' as any)}
+            />
           </BottomButtons>
           <BottomButtons>
-            <IconButton icon="cart-outline" size={30} />
+            <IconButton
+              icon={'cart-outline'}
+              size={30}
+              onPress={() => navigation.navigate('Cart' as any)}
+            />
           </BottomButtons>
           <BottomButtons>
-            <IconButton icon="cards-heart-outline" size={30} />
+            <IconButton
+              icon="cards-heart-outline"
+              size={30}
+              onPress={() => navigation.navigate('Fav' as any)}
+            />
           </BottomButtons>
         </CardButtons>
       </Section>
