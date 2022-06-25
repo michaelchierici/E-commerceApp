@@ -22,6 +22,7 @@ const Data: any = () => {
       ]);
     }
   }, []);
+
   useEffect(() => {
     setTimeout(() => {
       setIsloading(false);

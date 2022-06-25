@@ -1,15 +1,15 @@
 import {ADD_TO_FAV, REMOVE_TO_FAV} from '../favorite/actionTypes';
 
-export function addToFav(newItem: any) {
+export function addToFav(id: any, name: string, price: number) {
   return {
     type: ADD_TO_FAV,
-    payload: {newItem},
+    payload: {id, name, price},
   };
 }
 
-export function removeToFav(removedItem: any) {
+export function removeToFav(id: any, name: string, price: number) {
   return {
     type: REMOVE_TO_FAV,
-    payload: {removedItem},
+    payload: {id, name, price},
   };
 }

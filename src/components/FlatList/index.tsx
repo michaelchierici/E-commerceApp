@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {FlatList} from 'react-native';
 import {IconButton} from 'react-native-paper';
 import {useSelector} from 'react-redux';
@@ -28,6 +28,7 @@ export const FlatListCategories = () => {
         showsHorizontalScrollIndicator={false}
         horizontal
         data={setItem}
+        keyExtractor={(item, index) => `${item.id}${index}`}
         renderItem={({item}) => <Title>{item.name}</Title>}
       />
     </SectionTop>
@@ -37,8 +38,6 @@ export const FlatListCategories = () => {
 export const FlatListProducts = () => {
   const dispatch = useDispatch();
 
-  const [favItem] = useState([{id: 0, isFavorite: false}]);
-
   const {setItem}: any = useSelector((state: StoreType) => state.cartReducer);
 
   return (
@@ -47,10 +46,10 @@ export const FlatListProducts = () => {
         horizontal
         showsVerticalScrollIndicator={false}
         data={setItem}
-        keyExtractor={item => item?.id}
+        keyExtractor={(item, index) => `${item.id}${index}`}
         renderItem={({item}) => (
-          <SectionCards key={item?.id}>
-            <Card key={item?.id}>{item?.name}</Card>
+          <SectionCards>
+            <Card>{item.name}</Card>
             <SectionOption>
               <ActionButtons>
                 <IconButton
@@ -58,12 +57,7 @@ export const FlatListProducts = () => {
                   size={25}
                   onPress={() =>
                     dispatch(
-                      addToCart(
-                        item?.id,
-                        item?.name,
-                        item?.price,
-                        item?.ammount,
-                      ),
+                      addToCart(item.id, item.name, item.price, item.ammount),
                     )
                   }
                 />
@@ -72,14 +66,16 @@ export const FlatListProducts = () => {
                 <IconButton
                   icon="heart-outline"
                   size={25}
-                  onPress={() => dispatch(addToFav(favItem))}
+                  onPress={() =>
+                    dispatch(addToFav(item.id, item.name, item.price))
+                  }
                 />
               </ActionButtons>
             </SectionOption>
             <SectionDetail>
-              <ProductName key={item?.id}>{item?.name}</ProductName>
+              <ProductName>{item.name}</ProductName>
               <ProductDetail>
-                <ProductPrice key={item?.id}>{item?.price}</ProductPrice>
+                <ProductPrice>{item.price}</ProductPrice>
               </ProductDetail>
             </SectionDetail>
           </SectionCards>
