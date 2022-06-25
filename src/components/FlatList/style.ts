@@ -20,7 +20,7 @@ export const Title = styled.Text`
 `;
 
 export const SectionCards = styled.View`
-  width: 80%;
+  width: 250px;
   height: 58%;
   align-items: center;
   margin-bottom: auto;
@@ -29,8 +29,9 @@ export const SectionCards = styled.View`
   padding-right: 50px;
   elevation: 5;
   position: relative;
+  margin: 20px;
 `;
-export const Card = styled.Image`
+export const Card = styled.Text`
   max-width: 80%;
   height: 250px;
   margin: 15px;
@@ -84,10 +85,8 @@ export const SectionOption = styled.View`
 export const ActionButtons = styled.TouchableOpacity`
 align-items: center;
 justify-content: center;
-
 background-color: #dcdcdc;
 height: 50px;
 width: 50px
 border-radius: 50px;
-
 `;

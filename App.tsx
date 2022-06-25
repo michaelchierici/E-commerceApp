@@ -3,6 +3,7 @@ import {Provider} from 'react-redux';
 import NavigationBar from './src/components/Navigation';
 import TopBar from './src/components/TopBar';
 import Routes from './src/routes/';
+import Data from './src/hooks/data';
 import store from './src/store';
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
       <TopBar />
       <Routes />
       <NavigationBar />
+      <Data />
     </Provider>
   );
 };

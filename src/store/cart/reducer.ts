@@ -1,4 +1,4 @@
-import {ADD_TO_CART, REMOVE_TO_CART} from './actionTypes';
+import {ADD_TO_CART, REMOVE_TO_CART, SET_ITEMS_LIST} from './actionTypes';
 
 export interface CART_ITEM_REDUCER_INITIAL_STATE_PROPS {
   newItem: any[];
@@ -24,6 +24,14 @@ const cartReducer = (state = CART_REDUCER_INITIAL_STATE, action: any) => {
       return {
         ...state,
         newItem,
+      };
+    }
+    case SET_ITEMS_LIST: {
+      const setItem = action.payload;
+
+      return {
+        ...state,
+        setItem,
       };
     }
     case REMOVE_TO_CART: {

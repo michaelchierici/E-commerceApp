@@ -1,7 +1,18 @@
-import {ADD_TO_CART, REMOVE_TO_CART} from '../cart/actionTypes';
+import {ADD_TO_CART, REMOVE_TO_CART, SET_ITEMS_LIST} from '../cart/actionTypes';
 
-export interface newItem {
-  id: number;
+export function setItemsLists(
+  id?: any,
+  name?: string,
+  price?: number,
+  ammount?: number,
+) {
+  return {
+    type: SET_ITEMS_LIST,
+    payload: id,
+    name,
+    price,
+    ammount,
+  };
 }
 
 export function addToCart(
