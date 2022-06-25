@@ -12,31 +12,23 @@ import {
   ProductPrice,
   SectionDetail,
   ProductDetail,
-  Card,
   SectionCards,
   SectionTop,
   Title,
+  Card,
   SectionOption,
   ActionButtons,
 } from './style';
 
 export const FlatListCategories = () => {
+  const {setItem}: any = useSelector((state: StoreType) => state.cartReducer);
   return (
     <SectionTop>
       <FlatList
         showsHorizontalScrollIndicator={false}
         horizontal
-        data={[
-          {key: 'All'},
-          {key: 'Xbox'},
-          {key: 'Switch'},
-          {key: 'Playstation'},
-          {key: '360'},
-          {key: 'Playstation5'},
-          {key: 'Playstation4'},
-          {key: 'Playstation3'},
-        ]}
-        renderItem={({item}) => <Title>{item.key}</Title>}
+        data={setItem}
+        renderItem={({item}) => <Title>{item.name}</Title>}
       />
     </SectionTop>
   );
@@ -47,41 +39,52 @@ export const FlatListProducts = () => {
 
   const [favItem] = useState([{id: 0, isFavorite: false}]);
 
-  const [image] = useState([
-    {src: require('../../assets/alexa.jpg'), key: '1'},
-  ]);
-
-  const {newItem} = useSelector((state: StoreType) => state.cartReducer);
+  const {setItem}: any = useSelector((state: StoreType) => state.cartReducer);
 
   return (
-    <SectionCards>
+    <>
       <FlatList
+        horizontal
         showsVerticalScrollIndicator={false}
-        data={image}
-        renderItem={({item, index}) => <Card source={item.src} key={index} />}
+        data={setItem}
+        keyExtractor={item => item?.id}
+        renderItem={({item}) => (
+          <SectionCards key={item?.id}>
+            <Card key={item?.id}>{item?.name}</Card>
+            <SectionOption>
+              <ActionButtons>
+                <IconButton
+                  icon="cart-plus"
+                  size={25}
+                  onPress={() =>
+                    dispatch(
+                      addToCart(
+                        item?.id,
+                        item?.name,
+                        item?.price,
+                        item?.ammount,
+                      ),
+                    )
+                  }
+                />
+              </ActionButtons>
+              <ActionButtons>
+                <IconButton
+                  icon="heart-outline"
+                  size={25}
+                  onPress={() => dispatch(addToFav(favItem))}
+                />
+              </ActionButtons>
+            </SectionOption>
+            <SectionDetail>
+              <ProductName key={item?.id}>{item?.name}</ProductName>
+              <ProductDetail>
+                <ProductPrice key={item?.id}>{item?.price}</ProductPrice>
+              </ProductDetail>
+            </SectionDetail>
+          </SectionCards>
+        )}
       />
-      <SectionOption>
-        <ActionButtons>
-          <IconButton
-            icon="cart-plus"
-            size={25}
-            onPress={() => dispatch(addToCart(Math.random(), 'alexa', 20, 1))}
-          />
-        </ActionButtons>
-        <ActionButtons>
-          <IconButton
-            icon="heart-outline"
-            size={25}
-            onPress={() => dispatch(addToFav(favItem))}
-          />
-        </ActionButtons>
-      </SectionOption>
-      <SectionDetail>
-        <ProductName>{newItem.name}</ProductName>
-        <ProductDetail>
-          <ProductPrice>$100,00</ProductPrice>
-        </ProductDetail>
-      </SectionDetail>
-    </SectionCards>
+    </>
   );
 };
