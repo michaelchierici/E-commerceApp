@@ -1,9 +1,8 @@
 import React from 'react';
-
-import {Title} from './style';
+import {FlatListFavorites} from '../../components/FlatListFavorite';
 
 const Favorite = () => {
-  return <Title>Hello World, I'm the Favorite Screen</Title>;
+  return <FlatListFavorites />;
 };
 
 export default Favorite;

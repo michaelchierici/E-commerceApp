@@ -1,6 +1,7 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {FlatListCategories, FlatListProducts} from '../../components/FlatList';
+import {FlatListCategories} from '../../components/FlatListCategories';
+import {FlatListProducts} from '../../components/FlatListProducts';
 import {Container} from './style';
 
 const Home = () => {

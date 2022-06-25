@@ -13,27 +13,10 @@ import {
   SectionDetail,
   ProductDetail,
   SectionCards,
-  SectionTop,
-  Title,
   Card,
   SectionOption,
   ActionButtons,
 } from './style';
-
-export const FlatListCategories = () => {
-  const {setItem}: any = useSelector((state: StoreType) => state.cartReducer);
-  return (
-    <SectionTop>
-      <FlatList
-        showsHorizontalScrollIndicator={false}
-        horizontal
-        data={setItem}
-        keyExtractor={(item, index) => `${item.id}${index}`}
-        renderItem={({item}) => <Title>{item.name}</Title>}
-      />
-    </SectionTop>
-  );
-};
 
 export const FlatListProducts = () => {
   const dispatch = useDispatch();
@@ -54,21 +37,15 @@ export const FlatListProducts = () => {
               <ActionButtons>
                 <IconButton
                   icon="cart-plus"
-                  size={25}
-                  onPress={() =>
-                    dispatch(
-                      addToCart(item.id, item.name, item.price, item.ammount),
-                    )
-                  }
+                  size={40}
+                  onPress={() => dispatch(addToCart(item))}
                 />
               </ActionButtons>
               <ActionButtons>
                 <IconButton
                   icon="heart-outline"
-                  size={25}
-                  onPress={() =>
-                    dispatch(addToFav(item.id, item.name, item.price))
-                  }
+                  size={40}
+                  onPress={() => dispatch(addToFav(item))}
                 />
               </ActionButtons>
             </SectionOption>
