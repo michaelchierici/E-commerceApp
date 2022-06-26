@@ -38,7 +38,16 @@ export const FlatListProducts = () => {
                 <IconButton
                   icon="cart-plus"
                   size={40}
-                  onPress={() => dispatch(addToCart(item))}
+                  onPress={() =>
+                    dispatch(
+                      addToCart(
+                        (item.id = Math.random()),
+                        item.name,
+                        item.price,
+                        item.ammount,
+                      ),
+                    )
+                  }
                 />
               </ActionButtons>
               <ActionButtons>
