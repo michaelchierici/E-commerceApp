@@ -3,7 +3,7 @@ import {Provider} from 'react-redux';
 
 import TopBar from './src/components/TopBar';
 import Routes from './src/routes/';
-import Data from './src/hooks/data';
+import DataProvider from './src/hooks/useData';
 import store from './src/store';
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
     <Provider store={store}>
       <TopBar />
       <Routes />
-      <Data />
+      <DataProvider />
     </Provider>
   );
 };

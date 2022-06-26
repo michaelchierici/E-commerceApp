@@ -18,14 +18,26 @@ export const Cards = styled.View`
   align-items: center;
   justify-content: space-between;
   height: 60px;
-  width: 95%;
+  width: 94%;
   flex-direction: row;
   margin: 10px;
 `;
 
+export const CardsRemoved = styled.View`
+  background-color: #000;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  width: 95%;
+  flex-direction: row;
+  margin: 10px;
+  opacity: 0.2;
+`;
+
 export const ItemTitle = styled.Text`
   color: #fff;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
   font-family: 'roboto';
   margin-left: 10px;
@@ -39,8 +51,8 @@ export const ControlButtons = styled.View`
   flex-direction: row;
 `;
 export const ButtonAdd = styled.TouchableOpacity`
-  width: 22px;
-  height: 22px;
+  width: 25px;
+  height: 25px;
   align-items: center;
   justify-content: center;
   border-radius: 50px;
@@ -48,8 +60,8 @@ export const ButtonAdd = styled.TouchableOpacity`
 `;
 
 export const ButtonRemove = styled.TouchableOpacity`
-  width: 22px;
-  height: 22px;
+  width: 25px;
+  height: 25px;
   align-items: center;
   justify-content: center;
   border-radius: 50px;
