@@ -28,7 +28,7 @@ const favoriteReducer = (
     case REMOVE_TO_FAV: {
       return {
         ...state,
-        isFavorite: false,
+        favItem: action.payload,
       };
     }
     default:
