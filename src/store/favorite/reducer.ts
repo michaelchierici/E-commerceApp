@@ -1,4 +1,4 @@
-import {ADD_TO_FAV, REMOVE_TO_FAV} from './actionTypes';
+import {ADD_TO_FAV, REMOVE_FROM_FAV} from './actionTypes';
 
 export interface FAVORITE_ITEM_REDUCER_INITIAL_STATE_PROPS {
   id: number;
@@ -25,7 +25,7 @@ const favoriteReducer = (
         favItem: [...state.favItem, favItem],
       };
     }
-    case REMOVE_TO_FAV: {
+    case REMOVE_FROM_FAV: {
       return {
         ...state,
         favItem: action.payload,

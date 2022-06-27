@@ -2,7 +2,7 @@ import {
   ADD_AMMOUNT,
   ADD_TO_CART,
   DEL_AMMOUNT,
-  REMOVE_TO_CART,
+  REMOVE_FROM_CART,
   SET_ITEMS_LIST,
 } from '../cart/actionTypes';
 
@@ -50,9 +50,9 @@ export function delAmmount(ammount: number) {
   };
 }
 
-export function removeToCard(delItem: any) {
+export function removeFromCart(delItem: any) {
   return {
-    type: REMOVE_TO_CART,
+    type: REMOVE_FROM_CART,
     payload: delItem,
   };
 }

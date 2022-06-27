@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
 
 import {StoreType} from '../../store';
-import {addAmmount, delAmmount, removeToCard} from '../../store/actions';
+import {addAmmount, delAmmount, removeFromCart} from '../../store/actions';
 
 import {
   CardList,
@@ -42,7 +42,7 @@ export const FlatListCarts = () => {
                     item.ammount > 0
                       ? dispatch(delAmmount(item.ammount--))
                       : dispatch(
-                          removeToCard(
+                          removeFromCart(
                             newItem.filter(
                               (delItem: any) => item.id !== delItem.id,
                             ),
