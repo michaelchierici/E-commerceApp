@@ -1,4 +1,4 @@
-import {ADD_TO_FAV, REMOVE_TO_FAV} from '../favorite/actionTypes';
+import {ADD_TO_FAV, REMOVE_FROM_FAV} from '../favorite/actionTypes';
 
 export function addToFav(newItem: any[]) {
   return {
@@ -7,9 +7,9 @@ export function addToFav(newItem: any[]) {
   };
 }
 
-export function removeToFav(newItem: any[]) {
+export function removeFromFav(newItem: any[]) {
   return {
-    type: REMOVE_TO_FAV,
+    type: REMOVE_FROM_FAV,
     payload: newItem,
   };
 }

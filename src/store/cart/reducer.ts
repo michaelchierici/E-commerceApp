@@ -2,7 +2,7 @@ import {
   ADD_AMMOUNT,
   ADD_TO_CART,
   DEL_AMMOUNT,
-  REMOVE_TO_CART,
+  REMOVE_FROM_CART,
   SET_ITEMS_LIST,
 } from './actionTypes';
 
@@ -61,7 +61,7 @@ const cartReducer = (state = CART_REDUCER_INITIAL_STATE, action: any) => {
       };
     }
 
-    case REMOVE_TO_CART: {
+    case REMOVE_FROM_CART: {
       return {
         ...state,
         newItem: action.payload,

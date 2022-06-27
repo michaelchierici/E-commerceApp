@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
 
 import {StoreType} from '../../store';
-import {removeToFav} from '../../store/actions';
+import {removeFromFav} from '../../store/actions';
 
 import {CardList, Cards, ControlButtons, ItemTitle, ButtonHeart} from './style';
 
@@ -32,7 +32,7 @@ export const FlatListFavorites = () => {
                   size={28}
                   onPress={() =>
                     dispatch(
-                      removeToFav(
+                      removeFromFav(
                         favItem.filter(
                           (delItem: any) => item.id !== delItem.id,
                         ),
