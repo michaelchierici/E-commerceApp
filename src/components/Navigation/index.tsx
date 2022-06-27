@@ -17,21 +17,21 @@ const NavigationBar = () => {
           <BottomButtons>
             <IconButton
               icon={'home-outline'}
-              size={30}
+              size={35}
               onPress={() => navigation.navigate('Home' as any)}
             />
           </BottomButtons>
           <BottomButtons>
             <IconButton
               icon={'cart-outline'}
-              size={30}
+              size={35}
               onPress={() => navigation.navigate('Cart' as any)}
             />
           </BottomButtons>
           <BottomButtons>
             <IconButton
               icon="cards-heart-outline"
-              size={30}
+              size={35}
               onPress={() => navigation.navigate('Fav' as any)}
             />
           </BottomButtons>

@@ -1,26 +1,25 @@
 import styled from 'styled-components/native';
 
 export const SectionCards = styled.View`
-  width: 250px;
+  width: 300px;
   height: 58%;
   align-items: center;
-  margin-bottom: auto;
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: #fff;
-  padding-right: 50px;
+  padding-right: 30px;
   elevation: 5;
   position: relative;
-  margin: 20px;
+  top: 0%;
+  margin: 55px;
 `;
 export const Card = styled.Text`
-  max-width: 80%;
   height: 250px;
   margin: 15px;
   border-radius: 10px;
 `;
 
 export const SectionDetail = styled.View`
-  width: 90%;
+  width: 80%;
   height: 55px;
   align-items: center;
   justify-content: space-around;
