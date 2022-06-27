@@ -10,7 +10,7 @@ const TopBar = () => {
       end={{x: 0, y: 1}}
       colors={['#D5EAF5', '#F5DDDA']}>
       <Container>
-        <IconButton icon="menu" size={30} />
+        <IconButton icon="menu" size={35} />
       </Container>
     </LinearGradient>
   );

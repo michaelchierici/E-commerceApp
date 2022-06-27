@@ -12,9 +12,10 @@ export const Title = styled.Text`
   margin: 10px;
   border: 1px solid #000;
   text-align: center;
-  height: 50px;
+  height: 55px;
   padding: 15px;
   max-width: 100%;
   border-radius: 10px;
   background-color: #000;
+  elevation: 5;
 `;
