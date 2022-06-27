@@ -21,8 +21,6 @@ export const FlatListCarts = () => {
 
   const {newItem}: any = useSelector((state: StoreType) => state.cartReducer);
 
-  console.log(newItem);
-
   return (
     <CardList>
       <FlatList
@@ -43,7 +41,13 @@ export const FlatListCarts = () => {
                   onPress={() =>
                     item.ammount > 0
                       ? dispatch(delAmmount(item.ammount--))
-                      : dispatch(removeToCard(item.id))
+                      : dispatch(
+                          removeToCard(
+                            newItem.filter(
+                              (delItem: any) => item.id !== delItem.id,
+                            ),
+                          ),
+                        )
                   }
                 />
               </ButtonRemove>

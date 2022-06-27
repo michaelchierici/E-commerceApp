@@ -62,12 +62,9 @@ const cartReducer = (state = CART_REDUCER_INITIAL_STATE, action: any) => {
     }
 
     case REMOVE_TO_CART: {
-      const delItem = action.payload;
-      const filtered = delItem.filter((item: any) => delItem.id !== item.id);
-      console.log(delItem, 'reducer');
       return {
         ...state,
-        delItem: filtered,
+        newItem: action.payload,
       };
     }
     default:

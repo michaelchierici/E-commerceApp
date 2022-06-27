@@ -29,7 +29,7 @@ export function addToCart(
 ) {
   return {
     type: ADD_TO_CART,
-    payload: id,
+    id,
     name,
     price,
     ammount,
@@ -53,6 +53,6 @@ export function delAmmount(ammount: number) {
 export function removeToCard(delItem: any) {
   return {
     type: REMOVE_TO_CART,
-    payload: [delItem],
+    payload: delItem,
   };
 }
