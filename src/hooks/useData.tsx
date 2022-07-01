@@ -14,11 +14,11 @@ const DataProvider: any = () => {
   const fetchData = useCallback(() => {
     if ({data: {}}) {
       setData([
-        {id: Math.random(), name: 'alexa', price: 20, ammount: 1},
-        {id: Math.random(), name: 'google', price: 20, ammount: 1},
-        {id: Math.random(), name: 'pod', price: 20, ammount: 1},
-        {id: Math.random(), name: 'home', price: 20, ammount: 1},
-        {id: Math.random(), name: 'home', price: 20, ammount: 1},
+        {id: Math.random(), name: 'alexa', price: 20, ammount: 1, img: ''},
+        {id: Math.random(), name: 'google', price: 20, ammount: 1, img: ''},
+        {id: Math.random(), name: 'pod', price: 20, ammount: 1, img: ''},
+        {id: Math.random(), name: 'home', price: 20, ammount: 1, img: ''},
+        {id: Math.random(), name: 'home', price: 20, ammount: 1, img: ''},
       ]);
     }
   }, []);

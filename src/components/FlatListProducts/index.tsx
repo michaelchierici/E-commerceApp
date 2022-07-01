@@ -26,7 +26,6 @@ export const FlatListProducts = () => {
   return (
     <>
       <FlatList
-        horizontal
         showsVerticalScrollIndicator={false}
         data={setItem}
         keyExtractor={(item, index) => `${item.id}${index}`}
