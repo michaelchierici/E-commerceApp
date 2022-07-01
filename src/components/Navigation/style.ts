@@ -4,7 +4,7 @@ export const Section = styled.View`
   align-items: center;
   justify-content: center;
   width: 100%;
-  border: 0.5px solid;
+  background-color: #0d0d0d;
 `;
 
 export const CardButtons = styled.TouchableOpacity`
@@ -15,4 +15,7 @@ export const CardButtons = styled.TouchableOpacity`
   flex-direction: row;
 `;
 
-export const BottomButtons = styled.TouchableOpacity``;
+export const BottomButtons = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center;
+`;

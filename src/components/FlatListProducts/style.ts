@@ -2,28 +2,30 @@ import styled from 'styled-components/native';
 
 export const SectionCards = styled.View`
   width: 300px;
-  height: 58%;
+  height: 350px;
   align-items: center;
+  justify-content: center;
   border-radius: 15px;
-  background-color: #fff;
-  padding-right: 30px;
+  background-color: #dcdcdc;
   elevation: 5;
   position: relative;
   top: 0%;
-  margin: 55px;
+  z-index: 0;
+  margin: 15px auto;
 `;
 export const Card = styled.Text`
-  height: 250px;
+  height: 200px;
   margin: 15px;
   border-radius: 10px;
 `;
 
 export const SectionDetail = styled.View`
   width: 80%;
-  height: 55px;
+  height: 75px;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
+  z-index: 10;
 `;
 
 export const ProductName = styled.Text`
@@ -32,7 +34,6 @@ export const ProductName = styled.Text`
   font-weight: bold;
   color: #000;
   margin-right: auto;
-  margin-bottom: 30px;
 `;
 
 export const ProductDetail = styled.View`
@@ -54,10 +55,10 @@ export const ProductPrice = styled.Text`
 `;
 
 export const SectionOption = styled.View`
-  height: 150px;
+  height: 100px;
   width: 50px;
   position: absolute;
-  top: 20%;
+  z-index: 20;
   right: 10%;
   justify-content: space-around;
 `;

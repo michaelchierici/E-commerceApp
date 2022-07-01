@@ -10,7 +10,8 @@ export const Title = styled.Text`
   color: #fff;
   font-family: 'roboto';
   margin: 10px;
-  border: 1px solid #000;
+  border: #2fe648;
+  border-width: 2px;
   text-align: center;
   height: 55px;
   padding: 15px;
