@@ -1,15 +1,18 @@
 import styled from 'styled-components/native';
 
 export const CardList = styled.View`
-  background-color: #fde;
+  background-color: #393e46;
   justify-content: center;
   align-items: flex-start;
   width: 85%;
   height: 90%;
   margin: auto;
+  margin-bottom: 25px;
   border-radius: 10px;
   flex-direction: row;
   padding: 15px;
+  border: 1px solid #32e0c4;
+  elevation: 8;
 `;
 
 export const Cards = styled.View`
@@ -18,9 +21,10 @@ export const Cards = styled.View`
   align-items: center;
   justify-content: space-between;
   height: 60px;
-  width: 95%;
+  width: 94%;
   flex-direction: row;
   margin: 10px;
+  elevation: 8;
 `;
 
 export const ItemTitle = styled.Text`

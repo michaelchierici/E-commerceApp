@@ -1,15 +1,32 @@
 import styled from 'styled-components/native';
 
+export const TopSection = styled.View`
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin: auto;
+  margin-bottom: 10px;
+`;
+export const Title = styled.Text`
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Roboto';
+`;
+
 export const CardList = styled.View`
-  background-color: #fde;
+  background-color: #393e46;
   justify-content: center;
   align-items: flex-start;
   width: 85%;
   height: 90%;
   margin: auto;
+  margin-bottom: 25px;
   border-radius: 10px;
   flex-direction: row;
   padding: 15px;
+  border: 1px solid #32e0c4;
+  elevation: 8;
 `;
 
 export const Cards = styled.View`
@@ -21,6 +38,7 @@ export const Cards = styled.View`
   width: 94%;
   flex-direction: row;
   margin: 10px;
+  elevation: 8;
 `;
 
 export const CardsRemoved = styled.View`
@@ -37,22 +55,23 @@ export const CardsRemoved = styled.View`
 
 export const ItemTitle = styled.Text`
   color: #fff;
-  font-size: 18px;
+  font-size: 20px;
+  line-height: 25px;
   font-weight: bold;
-  font-family: 'roboto';
+  font-family: 'Roboto';
   margin-left: 10px;
 `;
 
 export const ControlButtons = styled.View`
-  height: 60px;
+  height: 9px;
   width: 80px;
   align-items: center;
   justify-content: space-around;
   flex-direction: row;
 `;
 export const ButtonAdd = styled.TouchableOpacity`
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   align-items: center;
   justify-content: center;
   border-radius: 50px;
@@ -60,10 +79,22 @@ export const ButtonAdd = styled.TouchableOpacity`
 `;
 
 export const ButtonRemove = styled.TouchableOpacity`
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   align-items: center;
   justify-content: center;
   border-radius: 50px;
   background-color: #fff;
+`;
+
+export const CardPrice = styled.View`
+  background-color: #000;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 50px;
+  flex-direction: row;
+  margin: auto;
+  margin-bottom: 10px;
 `;
