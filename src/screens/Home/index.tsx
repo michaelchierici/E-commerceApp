@@ -1,15 +1,12 @@
 import React from 'react';
 
-import {FlatListCategories} from '../../components/FlatListCategories';
-import {FlatListProducts} from '../../components/FlatListProducts';
-
-import {Container} from './style';
+import {FlatListHome} from '../../components/FlatListHome';
+import {Container} from '../../style/base';
 
 const Home = () => {
   return (
     <Container>
-      <FlatListCategories />
-      <FlatListProducts />
+      <FlatListHome />
     </Container>
   );
 };

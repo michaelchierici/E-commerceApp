@@ -24,7 +24,7 @@ import {
   SectionPrice,
 } from './style';
 
-export const FlatListProducts = () => {
+export const FlatListHome = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
