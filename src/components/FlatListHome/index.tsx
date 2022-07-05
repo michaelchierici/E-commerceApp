@@ -56,6 +56,7 @@ export const FlatListHome = () => {
                       item.name,
                       item.price,
                       item.ammount,
+                      item.price * item.ammount,
                     ),
                     navigation.navigate('Cart'),
                   );
@@ -71,6 +72,7 @@ export const FlatListHome = () => {
                             item.name,
                             item.price,
                             item.ammount,
+                            item.price * item.ammount,
                           ),
                         )
                       }

@@ -26,6 +26,7 @@ export function addToCart(
   name: string,
   price: number,
   ammount: number,
+  total: number,
 ) {
   return {
     type: ADD_TO_CART,
@@ -33,20 +34,23 @@ export function addToCart(
     name,
     price,
     ammount,
+    total,
   };
 }
 
-export function addAmmount(ammount: number) {
+export function addAmmount(ammount: number, total: number) {
   return {
     type: ADD_AMMOUNT,
-    payload: ammount,
+    ammount,
+    total,
   };
 }
 
-export function delAmmount(ammount: number) {
+export function delAmmount(ammount: number, total: number) {
   return {
     type: DEL_AMMOUNT,
-    payload: ammount,
+    ammount,
+    total,
   };
 }
 

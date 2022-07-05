@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, Text} from 'react-native';
 import {IconButton} from 'react-native-paper';
 import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
@@ -17,14 +17,17 @@ import {
   ItemTitle,
   Title,
   TopSection,
+  CardPrice,
 } from './style';
 
 export const FlatListCarts = () => {
   const dispatch = useDispatch();
 
-  const {newItem}: any = useSelector((state: StoreType) => state.cartReducer);
+  const {newItem, total}: any = useSelector(
+    (state: StoreType) => state.cartReducer,
+  );
 
-  const cloned: any = [...newItem];
+  console.log(total);
 
   return (
     <>
@@ -35,7 +38,7 @@ export const FlatListCarts = () => {
       <CardList>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={cloned}
+          data={newItem}
           keyExtractor={(item, index) => `${item.id}${index}`}
           renderItem={({item}) => (
             <Cards>
@@ -50,7 +53,9 @@ export const FlatListCarts = () => {
                     size={30}
                     onPress={() =>
                       item.ammount > 0
-                        ? dispatch(delAmmount(item.ammount--))
+                        ? dispatch(
+                            delAmmount(item.ammount--, item.total - item.price),
+                          )
                         : dispatch(
                             removeFromCart(
                               newItem.filter(
@@ -65,13 +70,23 @@ export const FlatListCarts = () => {
                   <IconButton
                     icon={'plus-circle-outline'}
                     size={30}
-                    onPress={() => dispatch(addAmmount(item.ammount++))}
+                    onPress={() =>
+                      dispatch(
+                        addAmmount(item.ammount++, item.ammount * item.price),
+                      )
+                    }
                   />
                 </ButtonAdd>
               </ControlButtons>
             </Cards>
           )}
         />
+        <CardPrice>
+          <Text style={{color: 'white'}}>
+            Total: R$
+            {total === undefined || 0 ? '0,00' : `${total},00`}
+          </Text>
+        </CardPrice>
       </CardList>
     </>
   );
