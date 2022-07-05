@@ -44,20 +44,24 @@ const cartReducer = (state = CART_REDUCER_INITIAL_STATE, action: any) => {
     }
 
     case ADD_AMMOUNT: {
-      const ammount = action.payload;
+      const ammount = action.ammount;
+      const total = action.total;
 
       return {
         ...state,
         ammount: ammount + 1,
+        total,
       };
     }
 
     case DEL_AMMOUNT: {
-      const ammount = action.payload;
+      const ammount = action.ammount;
+      const total = action.total;
 
       return {
         ...state,
         ammount: ammount - 1,
+        total,
       };
     }
 
