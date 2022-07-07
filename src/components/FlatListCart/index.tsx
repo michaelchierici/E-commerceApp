@@ -23,11 +23,16 @@ import {
 export const FlatListCarts = () => {
   const dispatch = useDispatch();
 
-  const {newItem, total}: any = useSelector(
+  const {newItem, total, totalSub, totalSum}: any = useSelector(
     (state: StoreType) => state.cartReducer,
   );
 
-  console.log(total);
+  let totalValue: any = [];
+  totalValue.push(totalSub, totalSum);
+  console.log(
+    totalValue.reduce((prev: any, curr: any) => prev + curr, total),
+    totalValue,
+  );
 
   return (
     <>
@@ -53,9 +58,7 @@ export const FlatListCarts = () => {
                     size={30}
                     onPress={() =>
                       item.ammount > 0
-                        ? dispatch(
-                            delAmmount(item.ammount--, item.total - item.price),
-                          )
+                        ? dispatch(delAmmount(item.ammount--, item.price))
                         : dispatch(
                             removeFromCart(
                               newItem.filter(
@@ -71,9 +74,7 @@ export const FlatListCarts = () => {
                     icon={'plus-circle-outline'}
                     size={30}
                     onPress={() =>
-                      dispatch(
-                        addAmmount(item.ammount++, item.ammount * item.price),
-                      )
+                      dispatch(addAmmount(item.ammount++, item.price))
                     }
                   />
                 </ButtonAdd>
