@@ -38,19 +38,19 @@ export function addToCart(
   };
 }
 
-export function addAmmount(ammount: number, total: number) {
+export function addAmmount(ammount: number, sumTotal: number) {
   return {
     type: ADD_AMMOUNT,
     ammount,
-    total,
+    sumTotal,
   };
 }
 
-export function delAmmount(ammount: number, total: number) {
+export function delAmmount(ammount: number, subTotal: number) {
   return {
     type: DEL_AMMOUNT,
     ammount,
-    total,
+    subTotal,
   };
 }
 
