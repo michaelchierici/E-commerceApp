@@ -1,6 +1,5 @@
-/* eslint-disable react-native/no-inline-styles */
-import React from 'react';
-import {FlatList, Text} from 'react-native';
+import React, {useState} from 'react';
+import {FlatList} from 'react-native';
 import {IconButton} from 'react-native-paper';
 import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
@@ -18,21 +17,16 @@ import {
   Title,
   TopSection,
   CardPrice,
+  TotalValue,
 } from './style';
 
 export const FlatListCarts = () => {
   const dispatch = useDispatch();
 
-  const {newItem, total, totalSub, totalSum}: any = useSelector(
+  const {newItem, total}: any = useSelector(
     (state: StoreType) => state.cartReducer,
   );
-
-  let totalValue: any = [];
-  totalValue.push(totalSub, totalSum);
-  console.log(
-    totalValue.reduce((prev: any, curr: any) => prev + curr, total),
-    totalValue,
-  );
+  const [totalResult, setTotalResult] = useState<any>(total);
 
   return (
     <>
@@ -58,7 +52,10 @@ export const FlatListCarts = () => {
                     size={30}
                     onPress={() =>
                       item.ammount > 0
-                        ? dispatch(delAmmount(item.ammount--, item.price))
+                        ? dispatch(
+                            delAmmount(item.ammount--),
+                            setTotalResult(totalResult - item.price),
+                          )
                         : dispatch(
                             removeFromCart(
                               newItem.filter(
@@ -74,7 +71,10 @@ export const FlatListCarts = () => {
                     icon={'plus-circle-outline'}
                     size={30}
                     onPress={() =>
-                      dispatch(addAmmount(item.ammount++, item.price))
+                      dispatch(
+                        addAmmount(item.ammount++),
+                        setTotalResult(totalResult + item.price),
+                      )
                     }
                   />
                 </ButtonAdd>
@@ -83,10 +83,10 @@ export const FlatListCarts = () => {
           )}
         />
         <CardPrice>
-          <Text style={{color: 'white'}}>
+          <TotalValue>
             Total: R$
-            {total === undefined || 0 ? '0,00' : `${total},00`}
-          </Text>
+            {totalResult}
+          </TotalValue>
         </CardPrice>
       </CardList>
     </>

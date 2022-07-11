@@ -95,6 +95,12 @@ export const CardPrice = styled.View`
   height: 50px;
   flex-direction: row;
   position: absolute;
-  bottom: 10.5%;
-  margin-left: 60px;
+  bottom: -15%;
+`;
+
+export const TotalValue = styled.Text`
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: 'Roboto';
 `;

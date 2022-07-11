@@ -29,11 +29,13 @@ export const CART_REDUCER_INITIAL_STATE = {
 const cartReducer = (state = CART_REDUCER_INITIAL_STATE, action: any) => {
   switch (action.type) {
     case ADD_TO_CART: {
-      const items: any = state.items;
       const newItem = action;
       const total = action.total;
-      items.push(total);
+
+      const items: any = state.items;
       state.items = items;
+
+      items.push(total);
       const totalValue = items.reduce((prev: any, curr: any) => prev + curr, 0);
 
       return {
@@ -52,32 +54,20 @@ const cartReducer = (state = CART_REDUCER_INITIAL_STATE, action: any) => {
     }
 
     case ADD_AMMOUNT: {
-      const items: any = state.items;
       const ammount = action.ammount;
-      const totalSum = action.sumTotal;
-      items.push(totalSum);
-      state.items = items;
-      const totalValue = items.reduce((prev: any, curr: any) => prev + curr, 0);
 
       return {
         ...state,
         ammount: ammount + 1,
-        totalSum: totalValue,
       };
     }
 
     case DEL_AMMOUNT: {
-      const items: any = state.items;
       const ammount = action.ammount;
-      const totalSub = action.subTotal;
-      items.push(totalSub);
-      state.items = items;
-      const totalValue = items.reduce((prev: any, curr: any) => prev + curr, 0);
 
       return {
         ...state,
         ammount: ammount - 1,
-        totalSub: totalValue,
       };
     }
 
