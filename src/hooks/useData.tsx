@@ -31,7 +31,7 @@ const DataProvider: any = () => {
 
   useEffect(() => {
     fetchData();
-    dispatch(setItemsLists(data));
+    dispatch(setItemsLists(data as any));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 

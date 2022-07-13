@@ -30,20 +30,13 @@ const cartReducer = (state = CART_REDUCER_INITIAL_STATE, action: any) => {
   switch (action.type) {
     case ADD_TO_CART: {
       const newItem = action;
-      const total = action.total;
-
-      const items: any = state.items;
-      state.items = items;
-
-      items.push(total);
-      const totalValue = items.reduce((prev: any, curr: any) => prev + curr, 0);
 
       return {
         ...state,
         newItem: [...state.newItem, newItem],
-        total: totalValue,
       };
     }
+
     case SET_ITEMS_LIST: {
       const setItem = action.payload;
 
