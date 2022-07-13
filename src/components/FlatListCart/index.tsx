@@ -23,10 +23,19 @@ import {
 export const FlatListCarts = () => {
   const dispatch = useDispatch();
 
-  const {newItem, total}: any = useSelector(
-    (state: StoreType) => state.cartReducer,
+  const {newItem}: any = useSelector((state: StoreType) => state.cartReducer);
+
+  const filteredCartItems: any = newItem.filter(
+    (value: any, index: any, self: any) =>
+      index === self.findIndex((isCheck: any) => isCheck.name === value.name),
   );
-  const [totalResult, setTotalResult] = useState<any>(total);
+  const priceTocalculate = filteredCartItems
+    .map((item: any) => item.price)
+    .reduce((curr: any) => curr);
+
+  const finalCount = Number(filteredCartItems.length * priceTocalculate);
+
+  const [totalResult, setTotalResult] = useState<number>(finalCount);
 
   return (
     <>
@@ -37,7 +46,7 @@ export const FlatListCarts = () => {
       <CardList>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={newItem}
+          data={filteredCartItems}
           keyExtractor={(item, index) => `${item.id}${index}`}
           renderItem={({item}) => (
             <Cards>

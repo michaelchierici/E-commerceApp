@@ -7,10 +7,10 @@ import {
 } from '../cart/actionTypes';
 
 export function setItemsLists(
-  id: number,
-  name: string,
-  price: number,
-  ammount: number,
+  id?: number,
+  name?: string,
+  price?: number,
+  ammount?: number,
 ) {
   return {
     type: SET_ITEMS_LIST,
@@ -26,7 +26,6 @@ export function addToCart(
   name: string,
   price: number,
   ammount: number,
-  total: number,
 ) {
   return {
     type: ADD_TO_CART,
@@ -34,18 +33,17 @@ export function addToCart(
     name,
     price,
     ammount,
-    total,
   };
 }
 
-export function addAmmount(ammount: number) {
+export function addAmmount(ammount?: number) {
   return {
     type: ADD_AMMOUNT,
     ammount,
   };
 }
 
-export function delAmmount(ammount: number) {
+export function delAmmount(ammount?: number) {
   return {
     type: DEL_AMMOUNT,
     ammount,

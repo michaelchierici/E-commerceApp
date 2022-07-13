@@ -30,12 +30,21 @@ export const FlatListHome = () => {
 
   const {setItem}: any = useSelector((state: StoreType) => state.cartReducer);
 
+  // 1º não pertmir inserir o mesmo item duas vezes no carrinho; OK!!!
+  // 2º criar tela de login com validação;
+  // 3º Tag Card que contém item.name será uma image;
+  // 4º botão de finalização de compra com animação;
+  // 5º icone e botão de adicionar favoritos ao abrir a imagem;
+  // 6º usar async storage;
+  // 7º usar uma animação de loading;
+  // 8º corrigir eslint e corrigir aviso;
+
   return (
     <>
       <FlatList
         showsVerticalScrollIndicator={false}
         data={setItem}
-        keyExtractor={(item, index) => `${item.id}${index}`}
+        keyExtractor={(item, key) => `${item.id}${key}`}
         renderItem={({item}) => (
           <SectionCards>
             <Card>{item.name}</Card>
@@ -56,7 +65,6 @@ export const FlatListHome = () => {
                       item.name,
                       item.price,
                       item.ammount,
-                      item.price,
                     ),
                     navigation.navigate('Cart'),
                   );
@@ -65,7 +73,7 @@ export const FlatListHome = () => {
                 renderThumbComponent={() => (
                   <ActionButtons>
                     <IconButton
-                      onPress={() =>
+                      onPress={() => {
                         dispatch(
                           addToCart(
                             (item.id = Math.random()),
@@ -74,8 +82,8 @@ export const FlatListHome = () => {
                             item.ammount,
                             item.price,
                           ),
-                        )
-                      }
+                        );
+                      }}
                       icon="cart-plus"
                       size={40}
                     />
