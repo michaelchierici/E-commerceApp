@@ -29,13 +29,17 @@ export const FlatListCarts = () => {
     (value: any, index: any, self: any) =>
       index === self.findIndex((isCheck: any) => isCheck.name === value.name),
   );
-  const priceTocalculate = filteredCartItems
-    .map((item: any) => item.price)
-    .reduce((curr: any) => curr);
 
-  const finalCount = Number(filteredCartItems.length * priceTocalculate);
+  const priceTocalculate =
+    filteredCartItems.length > 0
+      ? filteredCartItems
+          .map((item: any) => item.price)
+          .reduce((curr: any) => curr)
+      : null;
 
-  const [totalResult, setTotalResult] = useState<number>(finalCount);
+  const totalItemsinCartValue = filteredCartItems.length * priceTocalculate;
+
+  const [totalResult, setTotalResult] = useState<number>(totalItemsinCartValue);
 
   return (
     <>
@@ -94,7 +98,7 @@ export const FlatListCarts = () => {
         <CardPrice>
           <TotalValue>
             Total: R$
-            {totalResult}
+            {!totalResult ? ' 0.00' : totalResult}
           </TotalValue>
         </CardPrice>
       </CardList>

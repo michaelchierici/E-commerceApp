@@ -6,7 +6,7 @@ import Favorite from '../screens/Favorite';
 
 const Stack = createStackNavigator();
 
-export default function MainScreens(): any {
+export default function MainScreens() {
   return (
     <Stack.Navigator
       initialRouteName="Home"

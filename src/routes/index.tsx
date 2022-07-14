@@ -1,6 +1,6 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import NavigationBar from '../components/Navigation';
+import NavigationBar from '../components/BottomNavigationBar';
 
 import MainScreens from './Screen.routes';
 

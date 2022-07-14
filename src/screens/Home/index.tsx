@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {FlatListHome} from '../../components/FlatListHome';
 import {Container} from '../../style/base';
 

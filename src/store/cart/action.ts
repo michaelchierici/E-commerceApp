@@ -36,14 +36,14 @@ export function addToCart(
   };
 }
 
-export function addAmmount(ammount?: number) {
+export function addAmmount(ammount: number) {
   return {
     type: ADD_AMMOUNT,
     ammount,
   };
 }
 
-export function delAmmount(ammount?: number) {
+export function delAmmount(ammount: number) {
   return {
     type: DEL_AMMOUNT,
     ammount,
