@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {FlatList} from 'react-native';
 import {IconButton} from 'react-native-paper';
 import {useDispatch} from 'react-redux';
@@ -15,6 +15,10 @@ export const FlatListFavorites = () => {
   const {favItem}: any = useSelector(
     (state: StoreType) => state.favoriteReducer,
   );
+
+  useEffect(() => {
+    console.log('Mounted Fav');
+  }, []);
 
   return (
     <CardList>
