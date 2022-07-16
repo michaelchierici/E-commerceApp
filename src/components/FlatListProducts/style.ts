@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const SectionCards = styled.View`
   width: 300px;
-  height: 350px;
+  height: 360px;
   align-items: center;
   justify-content: center;
   border-radius: 15px;
@@ -13,28 +13,33 @@ export const SectionCards = styled.View`
   z-index: 0;
   margin: 15px auto;
 `;
-export const Card = styled.Text`
+export const Card = styled.View`
   height: 200px;
-  margin: 15px;
   border-radius: 10px;
+  margin-bottom: 40px;
 `;
 
 export const SectionDetail = styled.View`
   width: 100%;
-  height: 30px;
+  height: 32px;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
   z-index: 10;
-  bottom: 75%;
+  bottom: 77%;
   border-radius: 12px;
 `;
 
 export const ProductName = styled.Text`
   font-family: 'Roboto';
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
   color: #fff;
+
+  border-radius: 5px;
+  width: 50%;
+  height: 100%;
+  text-align: center;
 `;
 
 export const SectionOption = styled.View`

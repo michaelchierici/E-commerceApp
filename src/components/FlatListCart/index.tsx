@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {FlatList} from 'react-native';
 import {IconButton} from 'react-native-paper';
 import {useDispatch} from 'react-redux';
@@ -32,20 +32,17 @@ export const FlatListCarts = () => {
       index === self.findIndex((isCheck: any) => isCheck.name === value.name),
   );
 
-  const priceTocalculate =
+  const accumulatedPricesToCalc =
     filteredCartItems.length > 0
       ? filteredCartItems
           .map((item: any) => item.price)
           .reduce((curr: any) => curr)
       : null;
 
-  let totalItemsinCartValue = filteredCartItems.length * priceTocalculate;
+  let valueOfTotalItemsinCart =
+    filteredCartItems.length * accumulatedPricesToCalc;
 
-  const [totalResult, setTotalResult] = useState(totalItemsinCartValue);
-
-  useEffect(() => {
-    console.log('Mounted');
-  }, []);
+  const [totalResult, setTotalResult] = useState(valueOfTotalItemsinCart);
 
   return (
     <>
