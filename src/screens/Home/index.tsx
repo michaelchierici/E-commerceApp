@@ -1,11 +1,11 @@
 import React from 'react';
-import {FlatListHome} from '../../components/FlatListHome';
+import {FlatListProducts} from '../../components/FlatListProducts';
 import {Container} from '../../style/base';
 
 const Home = () => {
   return (
     <Container>
-      <FlatListHome />
+      <FlatListProducts />
     </Container>
   );
 };

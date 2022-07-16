@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 import {IconButton} from 'react-native-paper';
 import {useDispatch} from 'react-redux';
@@ -23,9 +23,11 @@ import {
 export const FlatListCarts = () => {
   const dispatch = useDispatch();
 
-  const {newItem}: any = useSelector((state: StoreType) => state.cartReducer);
+  const {itemAddedInCart}: any = useSelector(
+    (state: StoreType) => state.cartReducer,
+  );
 
-  const filteredCartItems: any = newItem.filter(
+  const filteredCartItems: any = itemAddedInCart.filter(
     (value: any, index: any, self: any) =>
       index === self.findIndex((isCheck: any) => isCheck.name === value.name),
   );
@@ -37,9 +39,13 @@ export const FlatListCarts = () => {
           .reduce((curr: any) => curr)
       : null;
 
-  const totalItemsinCartValue = filteredCartItems.length * priceTocalculate;
+  let totalItemsinCartValue = filteredCartItems.length * priceTocalculate;
 
-  const [totalResult, setTotalResult] = useState<number>(totalItemsinCartValue);
+  const [totalResult, setTotalResult] = useState(totalItemsinCartValue);
+
+  useEffect(() => {
+    console.log('Mounted');
+  }, []);
 
   return (
     <>
@@ -71,7 +77,7 @@ export const FlatListCarts = () => {
                           )
                         : dispatch(
                             removeFromCart(
-                              newItem.filter(
+                              itemAddedInCart.filter(
                                 (delItem: any) => item.id !== delItem.id,
                               ),
                             ),

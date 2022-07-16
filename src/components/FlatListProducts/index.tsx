@@ -24,11 +24,13 @@ import {
   SectionPrice,
 } from './style';
 
-export const FlatListHome = () => {
+export const FlatListProducts = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
-  const {setItem}: any = useSelector((state: StoreType) => state.cartReducer);
+  const {setItemInProductsList}: any = useSelector(
+    (state: StoreType) => state.productsReducer,
+  );
 
   // 1º não pertmir inserir o mesmo item duas vezes no carrinho; OK!!!
   // 2º botão de finalização de compra com animação;
@@ -43,7 +45,7 @@ export const FlatListHome = () => {
     <>
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={setItem}
+        data={setItemInProductsList}
         keyExtractor={(item, key) => `${item.id}${key}`}
         renderItem={({item}) => (
           <SectionCards>
