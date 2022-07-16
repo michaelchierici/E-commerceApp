@@ -1,15 +1,12 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  height: 65px;
+  height: 75px;
   align-items: center;
-  justify-content: space-between;
-  flex-direction: row-reverse;
+  flex-direction: row;
   background-color: #0d0d0d;
 `;
 
-export const InputField = styled.TextInput`
-  border-radius: 20px;
-  height: 50px;
-  border: 1px solid #1e1e;
+export const Logo = styled.Image`
+  margin-left: 10px;
 `;
