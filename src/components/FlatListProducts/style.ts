@@ -35,7 +35,6 @@ export const ProductName = styled.Text`
   font-size: 25px;
   font-weight: bold;
   color: #fff;
-
   border-radius: 5px;
   width: 50%;
   height: 100%;
