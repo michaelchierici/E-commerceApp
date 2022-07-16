@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux';
 
 import {StoreType} from '../../store';
 import {addAmmount, delAmmount, removeFromCart} from '../../store/actions';
+import {formatMoney} from '../../util/formatMoney';
 
 import {
   CardList,
@@ -42,7 +43,7 @@ export const FlatListCarts = () => {
   let valueOfTotalItemsinCart =
     filteredCartItems.length * accumulatedPricesToCalc;
 
-  const [totalResult, setTotalResult] = useState(valueOfTotalItemsinCart);
+  const [totalResult, setTotalResult] = useState<any>(valueOfTotalItemsinCart);
 
   return (
     <>
@@ -66,32 +67,28 @@ export const FlatListCarts = () => {
                       item.ammount <= 0 ? 'trash-can' : 'minus-circle-outline'
                     }
                     size={30}
-                    onPress={() =>
+                    onPress={() => {
                       item.ammount > 0
-                        ? dispatch(
-                            delAmmount(item.ammount--),
-                            setTotalResult(totalResult - item.price),
-                          )
+                        ? (dispatch(delAmmount(item.ammount--)),
+                          setTotalResult(totalResult - item.price))
                         : dispatch(
                             removeFromCart(
                               itemAddedInCart.filter(
                                 (delItem: any) => item.id !== delItem.id,
                               ),
                             ),
-                          )
-                    }
+                          );
+                    }}
                   />
                 </ButtonRemove>
                 <ButtonAdd>
                   <IconButton
                     icon={'plus-circle-outline'}
                     size={30}
-                    onPress={() =>
-                      dispatch(
-                        addAmmount(item.ammount++),
-                        setTotalResult(totalResult + item.price),
-                      )
-                    }
+                    onPress={() => {
+                      setTotalResult(totalResult + item.price);
+                      dispatch(addAmmount(item.ammount++));
+                    }}
                   />
                 </ButtonAdd>
               </ControlButtons>
@@ -99,10 +96,7 @@ export const FlatListCarts = () => {
           )}
         />
         <CardPrice>
-          <TotalValue>
-            Total: R$
-            {!totalResult ? ' 0.00' : totalResult}
-          </TotalValue>
+          <TotalValue>{formatMoney(totalResult)}</TotalValue>
         </CardPrice>
       </CardList>
     </>
