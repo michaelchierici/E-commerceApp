@@ -3,23 +3,7 @@ import {
   ADD_TO_CART,
   DEL_AMMOUNT,
   REMOVE_FROM_CART,
-  SET_ITEMS_LIST,
 } from '../cart/actionTypes';
-
-export function setItemsLists(
-  id?: number,
-  name?: string,
-  price?: number,
-  ammount?: number,
-) {
-  return {
-    type: SET_ITEMS_LIST,
-    payload: id,
-    name,
-    price,
-    ammount,
-  };
-}
 
 export function addToCart(
   id: number,
@@ -53,6 +37,6 @@ export function delAmmount(ammount: number) {
 export function removeFromCart(delItem: any) {
   return {
     type: REMOVE_FROM_CART,
-    payload: delItem,
+    delItem,
   };
 }

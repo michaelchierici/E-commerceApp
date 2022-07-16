@@ -11,7 +11,7 @@ const NavigationBar = () => {
       <CardButtons>
         <BottomButtons>
           <IconButton
-            icon={'home'}
+            icon="home"
             color={'#2fe648'}
             size={35}
             onPress={() => navigation.navigate('Home' as any)}
@@ -19,7 +19,7 @@ const NavigationBar = () => {
         </BottomButtons>
         <BottomButtons>
           <IconButton
-            icon={'cart'}
+            icon="cart"
             color={'#2fe648'}
             size={35}
             onPress={() => navigation.navigate('Cart' as any)}

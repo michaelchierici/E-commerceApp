@@ -3,11 +3,10 @@ import {
   ADD_TO_CART,
   DEL_AMMOUNT,
   REMOVE_FROM_CART,
-  SET_ITEMS_LIST,
 } from './actionTypes';
 
 export interface CART_ITEM_REDUCER_INITIAL_STATE_PROPS {
-  newItem: any[];
+  itemAddedInCart: any[];
   id: number;
   name: string;
   price: number;
@@ -17,7 +16,7 @@ export interface CART_ITEM_REDUCER_INITIAL_STATE_PROPS {
 }
 
 export const CART_REDUCER_INITIAL_STATE = {
-  newItem: [],
+  itemAddedInCart: [],
   id: Math.random(),
   name: '',
   price: 0,
@@ -29,20 +28,11 @@ export const CART_REDUCER_INITIAL_STATE = {
 const cartReducer = (state = CART_REDUCER_INITIAL_STATE, action: any) => {
   switch (action.type) {
     case ADD_TO_CART: {
-      const newItem = action;
+      const itemAddedInCart = action;
 
       return {
         ...state,
-        newItem: [...state.newItem, newItem],
-      };
-    }
-
-    case SET_ITEMS_LIST: {
-      const setItem = action.payload;
-
-      return {
-        ...state,
-        setItem,
+        itemAddedInCart: [...state.itemAddedInCart, itemAddedInCart],
       };
     }
 
@@ -57,7 +47,6 @@ const cartReducer = (state = CART_REDUCER_INITIAL_STATE, action: any) => {
 
     case DEL_AMMOUNT: {
       const ammount = action.ammount;
-
       return {
         ...state,
         ammount: ammount - 1,
@@ -67,9 +56,10 @@ const cartReducer = (state = CART_REDUCER_INITIAL_STATE, action: any) => {
     case REMOVE_FROM_CART: {
       return {
         ...state,
-        newItem: action.payload,
+        itemAddedInCart: action.delItem,
       };
     }
+
     default:
       return state;
   }
