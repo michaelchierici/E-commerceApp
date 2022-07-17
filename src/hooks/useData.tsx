@@ -1,25 +1,30 @@
 import React, {useEffect, useState, useCallback} from 'react';
+import {useSelector} from 'react-redux';
 
 import {useDispatch} from 'react-redux';
+import {StoreType} from '../store';
 
 import {setItemsLists} from '../store/actions';
+import {isLoading} from '../store/actions';
 
 export const dataContext = React.createContext({});
 
 const DataProvider: any = () => {
   const dispatch = useDispatch();
   const [data, setData] = useState<any[]>([{}]);
-  const [isLoading, setIsloading] = useState(true);
+  const {setLoading}: any = useSelector(
+    (state: StoreType) => state.loadingReducer,
+  );
 
   const fetchData = useCallback(() => {
     if ({data: {}}) {
       setData([
         {
           id: Math.random(),
-          name: 'Bulbasaur',
+          name: 'Jigglypuff',
           price: 20,
           ammount: 1,
-          img: 'https://lh6.googleusercontent.com/JLLAQ4oeJSpX1-OWQlZ6mCAH5MLcDl8MjrWRwGIsxFPBA70ADUFiBLLy3KOlD4ek8P4wF6usa8TBEttJdDPtRXr92rCagBarwdWLv4lGkkEiphPXHXBq4OydCmVpvMCREJ3otaI6',
+          img: 'https://lh6.googleusercontent.com/q21h4_xaCDBFcbOPIz8kJ5lWPwmB9lWMm2tfY-WXJ-SPAnWziyBMpddSF-0ChQWURmze7cuvzhstA867_KrLHiooCAQtvjkp1BrBIvXndyfh4YwfbBnoCYsyMHZzRK_9GH6LhBMT',
         },
         {
           id: Math.random(),
@@ -44,10 +49,10 @@ const DataProvider: any = () => {
         },
         {
           id: Math.random(),
-          name: 'Jigglypuff',
+          name: 'Bulbasaur',
           price: 20,
           ammount: 1,
-          img: 'https://lh6.googleusercontent.com/q21h4_xaCDBFcbOPIz8kJ5lWPwmB9lWMm2tfY-WXJ-SPAnWziyBMpddSF-0ChQWURmze7cuvzhstA867_KrLHiooCAQtvjkp1BrBIvXndyfh4YwfbBnoCYsyMHZzRK_9GH6LhBMT',
+          img: 'https://lh6.googleusercontent.com/JLLAQ4oeJSpX1-OWQlZ6mCAH5MLcDl8MjrWRwGIsxFPBA70ADUFiBLLy3KOlD4ek8P4wF6usa8TBEttJdDPtRXr92rCagBarwdWLv4lGkkEiphPXHXBq4OydCmVpvMCREJ3otaI6',
         },
       ]);
     }
@@ -55,15 +60,16 @@ const DataProvider: any = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      setIsloading(false);
-    }, 500);
+      dispatch(isLoading(false));
+    }, 2000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     fetchData();
     dispatch(setItemsLists(data as any));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
+  }, [setLoading]);
 
   return <dataContext.Provider value={{data, setData}} />;
 };

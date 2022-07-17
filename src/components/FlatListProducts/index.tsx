@@ -34,14 +34,10 @@ export const FlatListProducts = () => {
     (state: StoreType) => state.productsReducer,
   );
 
-  // 1º não pertmir inserir o mesmo item duas vezes no carrinho; OK!!!
-  // 2º botão de finalização de compra com animação;
+  // 1º botão de finalização de compra com animação;
   // 2º criar tela de login com validação;
-  // 3º Tag Card que contém item.name será uma image; OK!!
-  // 5º icone e botão de adicionar favoritos ao abrir a imagem;
-  // 6º usar async storage; ~~~~~~
-  // 7º usar uma animação de loading;
-  // 8º corrigir eslint e corrigir aviso; OK!!
+  // 3º usar async storage; ~~~~~~
+  // 4º usar uma animação de loading;
 
   return (
     <>
@@ -70,7 +66,6 @@ export const FlatListProducts = () => {
                 </FavoriteButton>
               </SectionDetail>
             </Card>
-
             <SectionOption>
               <Slider
                 containerStyle={{
