@@ -29,9 +29,9 @@ export const Cards = styled.View`
 
 export const ItemTitle = styled.Text`
   color: #fff;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
-  font-family: 'roboto';
+  font-family: 'Roboto';
   margin-left: 10px;
 `;
 
@@ -44,10 +44,7 @@ export const ControlButtons = styled.View`
 `;
 
 export const ButtonHeart = styled.TouchableOpacity`
-  width: 22px;
-  height: 22px;
   align-items: center;
   justify-content: center;
   border-radius: 50px;
-  background-color: #fff;
 `;

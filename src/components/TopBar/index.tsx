@@ -1,17 +1,20 @@
 /* eslint-disable react-native/no-inline-styles */
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
+import {IconButton} from 'react-native-paper';
 
-import {Container, Logo} from './style';
+import {Container} from './style';
 
 const TopBar = () => {
+  const navigation = useNavigation();
   return (
     <Container>
-      <Logo
-        source={require('../../assets/pokeball.png')}
-        style={{
-          width: 60,
-          height: 60,
-        }}
+      <IconButton
+        icon="pokeball"
+        size={70}
+        color={'#32E0C4'}
+        style={{margin: -10}}
+        onPress={() => navigation.navigate('Home' as any)}
       />
     </Container>
   );
