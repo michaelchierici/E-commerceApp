@@ -6,6 +6,7 @@ import {Loading} from '../components/loading';
 import TopBar from '../components/TopBar';
 import DataProvider from '../hooks/useData';
 import {StoreType} from '../store';
+import {Container} from '../style/base';
 
 import MainScreens from './Screen.routes';
 
@@ -16,15 +17,12 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <DataProvider />
-      {setLoading ? (
-        <Loading />
-      ) : (
-        <>
-          <TopBar />
-          <MainScreens />
-          <NavigationBar />
-        </>
-      )}
+      {setLoading && <Loading />}
+      <Container>
+        <TopBar />
+        <MainScreens />
+        <NavigationBar />
+      </Container>
     </NavigationContainer>
   );
 };

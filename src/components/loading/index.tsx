@@ -1,6 +1,25 @@
-import React from 'react';
-import {Text} from 'react-native-paper';
+import Lottie from 'lottie-react-native';
+import React, {useEffect, useRef} from 'react';
+import {Container} from '../../style/base';
+import {RotatedBox} from './style';
 
 export const Loading = () => {
-  return <Text>Carregando</Text>;
+  const animationRef = useRef<Lottie>(null);
+
+  useEffect(() => {
+    animationRef.current?.play();
+
+    // Or set a specific startFrame and endFrame with:
+    animationRef.current?.play(30, 120);
+  }, []);
+  return (
+    <Container>
+      <RotatedBox>
+        <Lottie
+          ref={animationRef}
+          source={require('../../assets/pokeball-loading.json')}
+        />
+      </RotatedBox>
+    </Container>
+  );
 };
