@@ -58,7 +58,7 @@ export const SectionDetail = styled.View`
 
 export const FavoriteButton = styled.TouchableOpacity`
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: row;
   width: 100%;
   margin-left: 30px;

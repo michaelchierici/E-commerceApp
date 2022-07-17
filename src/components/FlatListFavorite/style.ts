@@ -29,7 +29,7 @@ export const Cards = styled.View`
 
 export const ItemTitle = styled.Text`
   color: #fff;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   font-family: 'Roboto';
   margin-left: 10px;

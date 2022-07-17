@@ -3,7 +3,8 @@ import {Slider} from '@miblanchard/react-native-slider';
 import {useNavigation} from '@react-navigation/native';
 
 import React from 'react';
-import {FlatList, Image} from 'react-native';
+import {FlatList, Image, TouchableOpacity} from 'react-native';
+import {FavoriteIcon} from '../FavoriteIcons';
 
 import {IconButton} from 'react-native-paper';
 import {useSelector} from 'react-redux';
@@ -37,7 +38,7 @@ export const FlatListProducts = () => {
   // 1º botão de finalização de compra com animação;
   // 2º criar tela de login com validação;
   // 3º usar async storage; ~~~~~~
-  // 4º usar uma animação de loading;
+  // 4º usar uma animação de loading; OK!! Cogitar em melhorar a animação!
 
   return (
     <>
@@ -57,12 +58,9 @@ export const FlatListProducts = () => {
               <SectionDetail>
                 <FavoriteButton>
                   <ProductName>{item.name}</ProductName>
-                  <IconButton
-                    icon="heart-outline"
-                    size={40}
-                    color={'#32E0C4'}
-                    onPress={() => dispatch(addToFav(item))}
-                  />
+                  <TouchableOpacity onPress={() => dispatch(addToFav(item))}>
+                    <FavoriteIcon type={item.type} />
+                  </TouchableOpacity>
                 </FavoriteButton>
               </SectionDetail>
             </Card>

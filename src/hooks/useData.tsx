@@ -25,6 +25,7 @@ const DataProvider: any = () => {
           price: 20,
           ammount: 1,
           img: 'https://lh6.googleusercontent.com/q21h4_xaCDBFcbOPIz8kJ5lWPwmB9lWMm2tfY-WXJ-SPAnWziyBMpddSF-0ChQWURmze7cuvzhstA867_KrLHiooCAQtvjkp1BrBIvXndyfh4YwfbBnoCYsyMHZzRK_9GH6LhBMT',
+          type: 'Fairy',
         },
         {
           id: Math.random(),
@@ -32,6 +33,7 @@ const DataProvider: any = () => {
           price: 20,
           ammount: 1,
           img: 'https://lh5.googleusercontent.com/-va3HseRCEQS-KH_GFzA4PBwrMMYS2Da8SY_7zffpp9HKDfD5oX0ip9u4TB6vHJtmjNXJSYyi0tLLl8BlFeLtSc79JT2uHHoK_brIcNXLnG1M7dvD4PxDzsWdBExXN-BSWeQxhhX',
+          type: 'Eletric',
         },
         {
           id: Math.random(),
@@ -39,6 +41,7 @@ const DataProvider: any = () => {
           price: 20,
           ammount: 1,
           img: 'https://lh6.googleusercontent.com/LYkVVpYykwiqmMNwzvQPiogdlpCKUfqlEDZHb2qxcM46wJESWswHes2kjAaQmEZhHJzXtW0Ja3eb0tE-oSlgzmf3yTqiatlUy0ob1fjuTJxHdAMHJ737xPKXlIZhhf_4kNy60oTK',
+          type: 'Water',
         },
         {
           id: Math.random(),
@@ -46,6 +49,7 @@ const DataProvider: any = () => {
           price: 20,
           ammount: 1,
           img: 'https://lh3.googleusercontent.com/FIU97Vx9Xk7pBZK_BaMdDRcnak7wRK91vexpZHsR02FPPmNab6c72wVXSFfzx3HHPUGJtszOz4-eoE1-irbhwhELHrACuTVCViqfPdTLSJGkV2k-wDugo4TpyeEkHfY1iVMq219g',
+          type: 'Psychic',
         },
         {
           id: Math.random(),
@@ -53,6 +57,7 @@ const DataProvider: any = () => {
           price: 20,
           ammount: 1,
           img: 'https://lh6.googleusercontent.com/JLLAQ4oeJSpX1-OWQlZ6mCAH5MLcDl8MjrWRwGIsxFPBA70ADUFiBLLy3KOlD4ek8P4wF6usa8TBEttJdDPtRXr92rCagBarwdWLv4lGkkEiphPXHXBq4OydCmVpvMCREJ3otaI6',
+          type: 'Grass',
         },
       ]);
     }

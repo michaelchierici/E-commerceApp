@@ -1,11 +1,11 @@
 import React from 'react';
 import {FlatList} from 'react-native';
-import {IconButton} from 'react-native-paper';
 import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
 
 import {StoreType} from '../../store';
 import {removeFromFav} from '../../store/actions';
+import {FavoriteIcon} from '../FavoriteIcons';
 
 import {CardList, Cards, ControlButtons, ItemTitle, ButtonHeart} from './style';
 
@@ -31,21 +31,15 @@ export const FlatListFavorites = () => {
           <Cards>
             <ItemTitle>{item.name}</ItemTitle>
             <ControlButtons>
-              <ButtonHeart>
-                <IconButton
-                  icon={'cards-heart'}
-                  size={30}
-                  color={'#2fe648'}
-                  onPress={() =>
-                    dispatch(
-                      removeFromFav(
-                        favItem.filter(
-                          (delItem: any) => item.id !== delItem.id,
-                        ),
-                      ),
-                    )
-                  }
-                />
+              <ButtonHeart
+                onPress={() =>
+                  dispatch(
+                    removeFromFav(
+                      favItem.filter((delItem: any) => item.id !== delItem.id),
+                    ),
+                  )
+                }>
+                <FavoriteIcon type={item.type} />
               </ButtonHeart>
             </ControlButtons>
           </Cards>

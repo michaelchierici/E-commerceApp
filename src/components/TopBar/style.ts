@@ -6,7 +6,3 @@ export const Container = styled.View`
   flex-direction: row;
   background-color: #0d0d0d;
 `;
-
-export const Logo = styled.Image`
-  margin-left: 10px;
-`;

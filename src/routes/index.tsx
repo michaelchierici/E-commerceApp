@@ -2,7 +2,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {useSelector} from 'react-redux';
 import NavigationBar from '../components/BottomNavigationBar';
-import {Loading} from '../components/loading';
+import {Loading} from '../components/Loading';
 import TopBar from '../components/TopBar';
 import DataProvider from '../hooks/useData';
 import {StoreType} from '../store';
