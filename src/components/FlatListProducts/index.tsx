@@ -23,6 +23,7 @@ import {
   ActionButtons,
   ProductDetail,
   SectionPrice,
+  FavoriteButton,
 } from './style';
 
 export const FlatListProducts = () => {
@@ -32,6 +33,15 @@ export const FlatListProducts = () => {
   const {setItemInProductsList}: any = useSelector(
     (state: StoreType) => state.productsReducer,
   );
+
+  // 1º não pertmir inserir o mesmo item duas vezes no carrinho; OK!!!
+  // 2º botão de finalização de compra com animação;
+  // 2º criar tela de login com validação;
+  // 3º Tag Card que contém item.name será uma image; OK!!
+  // 5º icone e botão de adicionar favoritos ao abrir a imagem;
+  // 6º usar async storage; ~~~~~~
+  // 7º usar uma animação de loading;
+  // 8º corrigir eslint e corrigir aviso; OK!!
 
   return (
     <>
@@ -46,13 +56,21 @@ export const FlatListProducts = () => {
                 source={{
                   uri: item.img,
                 }}
-                style={{
-                  width: 250,
-                  height: 250,
-                  borderRadius: 10,
-                }}
+                style={{width: 250, height: 250, borderRadius: 10}}
               />
+              <SectionDetail>
+                <FavoriteButton>
+                  <ProductName>{item.name}</ProductName>
+                  <IconButton
+                    icon="heart-outline"
+                    size={40}
+                    color={'#32E0C4'}
+                    onPress={() => dispatch(addToFav(item))}
+                  />
+                </FavoriteButton>
+              </SectionDetail>
             </Card>
+
             <SectionOption>
               <Slider
                 containerStyle={{
@@ -97,23 +115,16 @@ export const FlatListProducts = () => {
               />
               <ProductDetail
                 pagingEnabled
-                contentContainerStyle={{flexGrow: 1, paddingBottom: 300}}>
-                <ActionButtons>
-                  <IconButton
-                    icon="heart-outline"
-                    size={40}
-                    onPress={() => dispatch(addToFav(item))}
-                  />
-                </ActionButtons>
-              </ProductDetail>
+                contentContainerStyle={{
+                  flexGrow: 1,
+                  paddingBottom: 300,
+                }}
+              />
               <SectionPrice>
                 <ProductPrice>R$ {item.price}</ProductPrice>
                 <IconButton icon="arrow-right" size={35} color="#2fe648" />
               </SectionPrice>
             </SectionOption>
-            <SectionDetail>
-              <ProductName>{item.name}</ProductName>
-            </SectionDetail>
           </SectionCards>
         )}
       />

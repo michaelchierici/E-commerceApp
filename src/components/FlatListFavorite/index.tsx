@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {FlatList} from 'react-native';
 import {IconButton} from 'react-native-paper';
 import {useDispatch} from 'react-redux';
@@ -16,15 +16,16 @@ export const FlatListFavorites = () => {
     (state: StoreType) => state.favoriteReducer,
   );
 
-  useEffect(() => {
-    console.log('Mounted Fav');
-  }, []);
+  const filteredFavItem: any = favItem.filter(
+    (value: any, index: any, self: any) =>
+      index === self.findIndex((isCheck: any) => isCheck.name === value.name),
+  );
 
   return (
     <CardList>
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={favItem}
+        data={filteredFavItem}
         keyExtractor={(item, index) => `${item.id}${index}`}
         renderItem={({item}) => (
           <Cards>
@@ -33,7 +34,8 @@ export const FlatListFavorites = () => {
               <ButtonHeart>
                 <IconButton
                   icon={'cards-heart'}
-                  size={28}
+                  size={30}
+                  color={'#2fe648'}
                   onPress={() =>
                     dispatch(
                       removeFromFav(
