@@ -1,13 +1,26 @@
 import styled from 'styled-components/native';
 
+export const TopSection = styled.View`
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+`;
+
+export const Title = styled.Text`
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Roboto';
+`;
+
 export const CardList = styled.View`
   background-color: #393e46;
   justify-content: center;
   align-items: flex-start;
   width: 85%;
-  height: 90%;
+  height: 80%;
   margin: auto;
-  margin-bottom: 25px;
+  margin-bottom: 70px;
   border-radius: 10px;
   flex-direction: row;
   padding: 15px;

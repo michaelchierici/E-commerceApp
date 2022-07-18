@@ -37,8 +37,7 @@ export const FlatListProducts = () => {
 
   // 1º botão de finalização de compra com animação;
   // 2º criar tela de login com validação;
-  // 3º usar async storage; ~~~~~~
-  // 4º usar uma animação de loading; OK!! Cogitar em melhorar a animação!
+  // 3º usar async storage;
 
   return (
     <>
