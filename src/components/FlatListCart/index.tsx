@@ -15,8 +15,6 @@ import {
   ButtonRemove,
   ButtonAdd,
   ItemTitle,
-  Title,
-  TopSection,
   CardPrice,
   TotalValue,
 } from './style';
@@ -46,59 +44,53 @@ export const FlatListCarts = () => {
   const [totalResult, setTotalResult] = useState<any>(valueOfTotalItemsinCart);
 
   return (
-    <>
-      <TopSection>
-        <Title>Checkout</Title>
-        <IconButton icon={'cart'} color={'#2fe648'} size={35} />
-      </TopSection>
-      <CardList>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={filteredCartItems}
-          keyExtractor={(item, index) => `${item.id}${index}`}
-          renderItem={({item}) => (
-            <Cards>
-              <ItemTitle>{item.name}</ItemTitle>
-              <ItemTitle>{item.ammount}</ItemTitle>
-              <ControlButtons>
-                <ButtonRemove>
-                  <IconButton
-                    icon={
-                      item.ammount <= 0 ? 'trash-can' : 'minus-circle-outline'
-                    }
-                    size={30}
-                    onPress={() => {
-                      item.ammount > 0
-                        ? (dispatch(delAmmount(item.ammount--)),
-                          setTotalResult(totalResult - item.price))
-                        : dispatch(
-                            removeFromCart(
-                              itemAddedInCart.filter(
-                                (delItem: any) => item.id !== delItem.id,
-                              ),
+    <CardList>
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        data={filteredCartItems}
+        keyExtractor={(item, index) => `${item.id}${index}`}
+        renderItem={({item}) => (
+          <Cards>
+            <ItemTitle>{item.name}</ItemTitle>
+            <ItemTitle>{item.ammount}</ItemTitle>
+            <ControlButtons>
+              <ButtonRemove>
+                <IconButton
+                  icon={
+                    item.ammount <= 0 ? 'trash-can' : 'minus-circle-outline'
+                  }
+                  size={30}
+                  onPress={() => {
+                    item.ammount > 0
+                      ? (dispatch(delAmmount(item.ammount--)),
+                        setTotalResult(totalResult - item.price))
+                      : dispatch(
+                          removeFromCart(
+                            itemAddedInCart.filter(
+                              (delItem: any) => item.id !== delItem.id,
                             ),
-                          );
-                    }}
-                  />
-                </ButtonRemove>
-                <ButtonAdd>
-                  <IconButton
-                    icon={'plus-circle-outline'}
-                    size={30}
-                    onPress={() => {
-                      setTotalResult(totalResult + item.price);
-                      dispatch(addAmmount(item.ammount++));
-                    }}
-                  />
-                </ButtonAdd>
-              </ControlButtons>
-            </Cards>
-          )}
-        />
-        <CardPrice>
-          <TotalValue>{formatMoney(totalResult)}</TotalValue>
-        </CardPrice>
-      </CardList>
-    </>
+                          ),
+                        );
+                  }}
+                />
+              </ButtonRemove>
+              <ButtonAdd>
+                <IconButton
+                  icon={'plus-circle-outline'}
+                  size={30}
+                  onPress={() => {
+                    setTotalResult(totalResult + item.price);
+                    dispatch(addAmmount(item.ammount++));
+                  }}
+                />
+              </ButtonAdd>
+            </ControlButtons>
+          </Cards>
+        )}
+      />
+      <CardPrice>
+        <TotalValue>{formatMoney(totalResult)}</TotalValue>
+      </CardPrice>
+    </CardList>
   );
 };
