@@ -9,7 +9,7 @@ export const Title = styled.Text`
   color: #fff;
   font-size: 20px;
   font-weight: bold;
-  font-family: 'Roboto';
+  font-family: 'System';
 `;
 
 export const CardList = styled.View`
@@ -57,7 +57,7 @@ export const ItemTitle = styled.Text`
   font-size: 20px;
   line-height: 25px;
   font-weight: bold;
-  font-family: 'Roboto';
+  font-family: 'System';
   margin-left: 10px;
 `;
 
@@ -102,5 +102,5 @@ export const TotalValue = styled.Text`
   color: #fff;
   font-weight: bold;
   font-size: 18px;
-  font-family: 'Roboto';
+  font-family: 'System';
 `;

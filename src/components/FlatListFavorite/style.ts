@@ -10,7 +10,7 @@ export const Title = styled.Text`
   color: #fff;
   font-size: 20px;
   font-weight: bold;
-  font-family: 'Roboto';
+  font-family: 'System';
 `;
 
 export const CardList = styled.View`
@@ -44,7 +44,7 @@ export const ItemTitle = styled.Text`
   color: #fff;
   font-size: 20px;
   font-weight: bold;
-  font-family: 'Roboto';
+  font-family: 'System';
   margin-left: 10px;
 `;
 
