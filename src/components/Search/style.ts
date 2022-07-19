@@ -8,7 +8,7 @@ export const Title = styled.Text`
   font-size: 16px;
   font-weight: bold;
   color: #fff;
-  font-family: 'roboto';
+  font-family: 'System';
   margin: 10px;
   border: #2fe648;
   border-width: 2px;

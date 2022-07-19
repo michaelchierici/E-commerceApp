@@ -66,7 +66,7 @@ export const FavoriteButton = styled.TouchableOpacity`
 `;
 
 export const ProductName = styled.Text`
-  font-family: 'Roboto';
+  font-family: 'System';
   font-size: 25px;
   font-weight: bold;
   color: #fff;
@@ -82,7 +82,7 @@ export const SectionPrice = styled.View`
 `;
 
 export const ProductPrice = styled.Text`
-  font-family: 'Roboto';
+  font-family: 'System';
   font-size: 16px;
   color: #e6e6e6;
   font-weight: bold;
