@@ -5,6 +5,7 @@ import JigglypuffIcon from '../../assets/jigglypuffIcon.svg';
 import BulbasaurIcon from '../../assets/bulbasaurIcon.svg';
 import SquirtleIcon from '../../assets/squirtleIcon.svg';
 import {Text} from 'react-native';
+
 interface IconTypes {
   type: string;
 }
