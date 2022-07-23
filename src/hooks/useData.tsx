@@ -1,3 +1,52 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
+import React, {useEffect, useState, useCallback} from 'react';
+import {useSelector} from 'react-redux';
+
+import {useDispatch} from 'react-redux';
+import {api} from '../services/api';
+import {StoreType} from '../store';
+
+import {setItemsLists} from '../store/actions';
+import {isLoading} from '../store/actions';
+
+export const dataContext = React.createContext({});
+
+const DataProvider: any = () => {
+  const dispatch = useDispatch();
+  const [data, setData] = useState<any[]>([{}]);
+  const {setLoading}: any = useSelector(
+    (state: StoreType) => state.loadingReducer,
+  );
+
+  const fetchData = useCallback(() => {
+    api
+      .get('/pokemons')
+      .then((res: any) => {
+        dispatch(setItemsLists(res.data));
+      })
+      .catch((error: any) => console.log(error));
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(isLoading(false));
+    }, 2000);
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [setLoading]);
+
+  return <dataContext.Provider value={{data, setData}} />;
+};
+
+export default DataProvider;
+
+/* ##CASE YOU DON'T WANT TO USE POKEDEXAPI FROM MY REPOSITORY, YOU CAN USE MOCKEDUP DATA, JUST UNCOMMENT THE CODE BELLOW AND COMMENT THE CODE ABOVE
+
+=> https://github.com/michaelchierici/pokedexAPI
+
 import React, {useEffect, useState, useCallback} from 'react';
 import {useSelector} from 'react-redux';
 
@@ -79,4 +128,4 @@ const DataProvider: any = () => {
   return <dataContext.Provider value={{data, setData}} />;
 };
 
-export default DataProvider;
+export default DataProvider; */
