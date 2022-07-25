@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
 import {Slider} from '@miblanchard/react-native-slider';
 import {useNavigation} from '@react-navigation/native';
@@ -40,6 +41,7 @@ export const FlatListProducts = () => {
   // 3º usar async storage;
   // 4º rever cores do aplicação e ícones;
   // 5º expandir imagem e mostrar descrição;
+  // 6º README com fotos do app;
 
   return (
     <>
