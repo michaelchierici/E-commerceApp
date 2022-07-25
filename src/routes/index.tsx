@@ -5,7 +5,7 @@ import NavigationBar from '../components/BottomNavigationBar';
 import {Loading} from '../components/loading';
 import TopBar from '../components/TopBar';
 import DataProvider from '../hooks/useData';
-import {Login} from '../screens/Login';
+
 import {StoreType} from '../store';
 import {Container} from '../style/base';
 
@@ -18,11 +18,10 @@ const Routes = () => {
   return (
     <NavigationContainer>
       {setLoading && <Loading />}
-      <Login />
-      <DataProvider />
       <Container>
         <TopBar />
         <MainScreens />
+        <DataProvider />
         <NavigationBar />
       </Container>
     </NavigationContainer>

@@ -9,42 +9,48 @@ import {StoreType} from '../store';
 
 import {setItemsLists} from '../store/actions';
 import {isLoading} from '../store/actions';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const dataContext = React.createContext({});
 
 const DataProvider: any = () => {
   const dispatch = useDispatch();
-  const [data, setData] = useState<any[]>([{}]);
+  const [catchData, setData] = useState<any[]>([{}]);
   const {setLoading}: any = useSelector(
     (state: StoreType) => state.loadingReducer,
   );
 
-  const fetchData = useCallback(() => {
-    api
-      .get('/pokemons')
-      .then((res: any) => {
-        dispatch(setItemsLists(res.data));
-      })
-      .catch((error: any) => console.log(error));
-  }, []);
+  // const fetchData = useCallback(async () => {
+  //   const token: any = await AsyncStorage.getItem('token');
+
+  //   try {
+  //     api.get('/api/pokemons');
+  //     'Bearer ' + JSON.stringify(token);
+  //     console.log(api.get('/api/pokemons'));
+  //     //dispatch(setItemsLists(data));
+  //   } catch (error: any) {
+  //     console.log(error);
+  //   }
+  // }, [setLoading]);
 
   useEffect(() => {
     setTimeout(() => {
       dispatch(isLoading(false));
     }, 2000);
-  }, []);
-
-  useEffect(() => {
-    fetchData();
   }, [setLoading]);
 
-  return <dataContext.Provider value={{data, setData}} />;
+  useEffect(() => {
+    setTimeout(() => {
+      // fetchData();
+    }, 2000);
+  }, []);
+
+  return <dataContext.Provider value={{catchData, setData}} />;
 };
 
 export default DataProvider;
 
 /* ##CASE YOU DON'T WANT TO USE POKEDEXAPI FROM MY REPOSITORY, YOU CAN USE MOCKEDUP DATA, JUST UNCOMMENT THE CODE BELLOW AND COMMENT THE CODE ABOVE
-
 => https://github.com/michaelchierici/pokedexAPI
 
 import React, {useEffect, useState, useCallback} from 'react';
