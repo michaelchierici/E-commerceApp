@@ -23,8 +23,8 @@ export const CART_REDUCER_INITIAL_STATE = {
 const productsReducer = (state = CART_REDUCER_INITIAL_STATE, action: any) => {
   switch (action.type) {
     case SET_ITEMS_LIST: {
-      const setItemInProductsList = action;
-      console.log(action, 'reducer');
+      const setItemInProductsList = action.payload;
+
       return {
         ...state,
         setItemInProductsList,
