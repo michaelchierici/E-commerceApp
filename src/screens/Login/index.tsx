@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import {Container} from '../../style/base';
 import {
   ContentField,
@@ -21,26 +21,45 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const Login = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const createAccount = async (credencials: any) => {
+    try {
+      const response = await api.post('/api/trainer', credencials, {});
+
+      return response;
+    } catch (error: any) {
+      console.log(error, 'usuário não cadastrado ou senha inválida');
+    }
+  };
+
   const login = useCallback(async (credencials: any) => {
     try {
       const {data}: any = await api.post('/api/login', credencials, {});
-      'Bearer ' + data.token;
+
       await AsyncStorage.setItem('token', data.token);
     } catch (error: any) {
       console.log(error, 'usuário não cadastrado ou senha inválida');
     }
   }, []);
 
+  const handleValidAccount = async (values: any) => {
+    await createAccount(values);
+
+    setIsAuthenticated(true);
+  };
+
   const handleValidSubmit = async (values: any) => {
-    const token: any = await AsyncStorage.getItem('token');
     await login(values);
     dispatch(isLoading(true));
 
     try {
-      const {data}: any = api.get('/api/pokemons');
-      'Bearer ' + JSON.stringify(token);
-      console.log(data, 'login');
-      dispatch(setItemsLists(data));
+      const token: any = await AsyncStorage.getItem('token');
+      const response: any = await api.get('/api/pokemons', {
+        headers: {authorization: 'Bearer ' + token},
+      });
+
+      dispatch(setItemsLists(await response.data));
     } catch (error: any) {
       console.log(error);
     }
@@ -52,7 +71,7 @@ export const Login = () => {
       user: '',
       password: '',
     },
-    onSubmit: handleValidSubmit,
+    onSubmit: !isAuthenticated ? handleValidAccount : handleValidSubmit,
     validationSchema: loginSchema,
   });
 
@@ -74,7 +93,9 @@ export const Login = () => {
           onSubmitEditing={handleSubmit}
         />
         <LoginButton>
-          <LoginText onPress={handleSubmit}>Entrar</LoginText>
+          <LoginText onPress={handleSubmit}>
+            {isAuthenticated ? 'Entrar' : 'Crie sua Conta'}
+          </LoginText>
         </LoginButton>
       </ContentField>
     </Container>
