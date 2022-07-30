@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Container} from '../../style/base';
 import {
   ContentField,
@@ -17,10 +17,16 @@ import {api} from '../../services/api';
 import {setLoading, setItemsLists} from '../../store/actions';
 import {useDispatch} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {setAuth} from '../../store/auth/action';
+import {StoreType} from '../../store';
+import {useSelector} from 'react-redux';
 
 export const Login = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const {isLoading}: any = useSelector(
+    (state: StoreType) => state.loadingReducer,
+  );
   const [isAccountExist, setIsAccountExist] = useState(false);
 
   const createAccount = async (credentials: any) => {
@@ -29,7 +35,11 @@ export const Login = () => {
 
       return response;
     } catch (error: any) {
-      console.log(error, 'usuário não cadastrado ou senha inválida');
+      const statusCode = error.status;
+      console.log(error, 'erro na req');
+      if (statusCode === 401) {
+        console.log(error, 'nome de usuário já existe');
+      }
     }
   };
 
@@ -38,36 +48,42 @@ export const Login = () => {
       const {data}: any = await api.post('/api/login', credentials, {});
 
       await AsyncStorage.setItem('token', data.token);
+
+      dispatch(setAuth(true));
     } catch (error: any) {
       console.log(error, 'usuário não cadastrado ou senha inválida');
-      const statusCode = error.data?.status;
-
-      if (statusCode === 401) {
-        navigation.navigate('Login' as any);
-      }
+      setIsAccountExist(false);
     }
   }, []);
 
-  const handleValidAccount = async (values: any) => {
-    await createAccount(values);
-    setIsAccountExist(true);
-  };
-
   const handleValidSubmit = async (values: any) => {
     await login(values);
-    dispatch(setLoading(true));
 
+    dispatch(setLoading(true));
     try {
       const token: any = await AsyncStorage.getItem('token');
       const response: any = await api.get('/api/pokemons', {
         headers: {authorization: 'Bearer ' + token},
       });
 
+      dispatch(setAuth(true));
       dispatch(setItemsLists(await response.data));
     } catch (error: any) {
-      console.log(error);
+      const statusCode = error?.status;
+
+      if (statusCode === 401) {
+        dispatch(setAuth(false));
+
+        navigation.navigate('Login' as any);
+
+        AsyncStorage.clear();
+      }
     }
     navigation.navigate('Home' as any);
+  };
+
+  const handleValidAccount = async (values: any) => {
+    await createAccount(values);
   };
 
   const singIn = () => {
@@ -82,6 +98,12 @@ export const Login = () => {
     onSubmit: !isAccountExist ? handleValidAccount : handleValidSubmit,
     validationSchema: loginSchema,
   });
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(setLoading(false));
+    }, 2000);
+  }, [isLoading]);
 
   return (
     <Container style={{alignItems: 'center', justifyContent: 'center'}}>

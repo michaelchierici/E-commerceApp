@@ -37,11 +37,11 @@ export const FlatListProducts = () => {
   );
 
   // 1º botão de finalização de compra com animação;
-  // 2º criar tela de login com validação;
-  // 3º usar async storage;
-  // 4º rever cores do aplicação e ícones;
-  // 5º expandir imagem e mostrar descrição;
-  // 6º README com fotos do app;
+  // 2º expandir imagem e mostrar descrição;
+  // 3º README com fotos do app;
+  // 4º verificar o uso de id no front
+  // 5º colocar valor total do carrinho no redux
+  // 6º trativa de erros no back e no front
 
   return (
     <>
