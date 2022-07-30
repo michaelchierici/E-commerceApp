@@ -5,20 +5,20 @@ import {useSelector} from 'react-redux';
 
 import {FlatListProducts} from '../../components/FlatListProducts';
 import {StoreType} from '../../store';
-import {isLoading} from '../../store/actions';
+import {setLoading} from '../../store/actions';
 import {Container} from '../../style/base';
 
 const Home = () => {
   const dispatch = useDispatch();
 
-  const {setLoading}: any = useSelector(
+  const {isLoading}: any = useSelector(
     (state: StoreType) => state.loadingReducer,
   );
   useEffect(() => {
     setTimeout(() => {
-      dispatch(isLoading(false));
+      dispatch(setLoading(false));
     }, 3000);
-  }, [setLoading]);
+  }, [isLoading]);
   return (
     <Container>
       <FlatListProducts />

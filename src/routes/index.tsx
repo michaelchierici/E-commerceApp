@@ -12,12 +12,12 @@ import {Container} from '../style/base';
 import MainScreens from './Screen.routes';
 
 const Routes = () => {
-  const {setLoading}: any = useSelector(
+  const {isLoading}: any = useSelector(
     (state: StoreType) => state.loadingReducer,
   );
   return (
     <NavigationContainer>
-      {setLoading && <Loading />}
+      {isLoading && <Loading />}
       <Container>
         <TopBar />
         <MainScreens />
