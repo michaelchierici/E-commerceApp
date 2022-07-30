@@ -1,11 +1,11 @@
-import {IS_LOADING} from './actionTypes';
+import {IS_AUTHENTICATED} from './actionTypes';
 
 export interface LOADING_STATE_PROPS {
-  isLoading: boolean;
+  isAuthenticated: boolean;
 }
 
 export const LOADING_REDUCER_INITIAL_STATE: LOADING_STATE_PROPS = {
-  isLoading: true,
+  isAuthenticated: true,
 };
 
 const loadingReducer = (
@@ -13,12 +13,12 @@ const loadingReducer = (
   action: any,
 ): LOADING_STATE_PROPS => {
   switch (action.type) {
-    case IS_LOADING: {
-      const isLoading = action.loading;
+    case IS_AUTHENTICATED: {
+      const isAuthenticated = action.loading;
 
       return {
         ...state,
-        isLoading,
+        isAuthenticated,
       };
     }
 

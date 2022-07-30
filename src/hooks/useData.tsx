@@ -1,49 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import React, {useEffect, useState, useCallback} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 
 import {useDispatch} from 'react-redux';
-import {api} from '../services/api';
+
 import {StoreType} from '../store';
 
-import {setItemsLists} from '../store/actions';
-import {isLoading} from '../store/actions';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {setLoading} from '../store/actions';
 
 export const dataContext = React.createContext({});
 
 const DataProvider: any = () => {
   const dispatch = useDispatch();
   const [catchData, setData] = useState<any[]>([{}]);
-  const {setLoading}: any = useSelector(
+  const {isLoading}: any = useSelector(
     (state: StoreType) => state.loadingReducer,
   );
 
-  // const fetchData = useCallback(async () => {
-  //   const token: any = await AsyncStorage.getItem('token');
-
-  //   try {
-  //     api.get('/api/pokemons');
-  //     'Bearer ' + JSON.stringify(token);
-  //     console.log(api.get('/api/pokemons'));
-  //     //dispatch(setItemsLists(data));
-  //   } catch (error: any) {
-  //     console.log(error);
-  //   }
-  // }, [setLoading]);
-
   useEffect(() => {
     setTimeout(() => {
-      dispatch(isLoading(false));
+      dispatch(setLoading(false));
     }, 2000);
-  }, [setLoading]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      // fetchData();
-    }, 2000);
-  }, []);
+  }, [isLoading]);
 
   return <dataContext.Provider value={{catchData, setData}} />;
 };
@@ -60,14 +39,14 @@ import {useDispatch} from 'react-redux';
 import {StoreType} from '../store';
 
 import {setItemsLists} from '../store/actions';
-import {isLoading} from '../store/actions';
+import {setLoading} from '../store/actions';
 
 export const dataContext = React.createContext({});
 
 const DataProvider: any = () => {
   const dispatch = useDispatch();
   const [data, setData] = useState<any[]>([{}]);
-  const {setLoading}: any = useSelector(
+  const {isLoading}: any = useSelector(
     (state: StoreType) => state.loadingReducer,
   );
 
@@ -120,16 +99,16 @@ const DataProvider: any = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      dispatch(isLoading(false));
+      dispatch(setLoading(false));
     }, 2000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, []);
 
   useEffect(() => {
     fetchData();
     dispatch(setItemsLists(data as any));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setLoading]);
+
+  }, [isLoading]);
 
   return <dataContext.Provider value={{data, setData}} />;
 };

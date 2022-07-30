@@ -14,18 +14,18 @@ import {loginSchema} from '../../util/loginSchema';
 import {useFormik} from 'formik';
 import {useNavigation} from '@react-navigation/native';
 import {api} from '../../services/api';
-import {isLoading, setItemsLists} from '../../store/actions';
+import {setLoading, setItemsLists} from '../../store/actions';
 import {useDispatch} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const Login = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAccountExist, setIsAccountExist] = useState(false);
 
-  const createAccount = async (credencials: any) => {
+  const createAccount = async (credentials: any) => {
     try {
-      const response = await api.post('/api/trainer', credencials, {});
+      const response = await api.post('/api/trainer', credentials, {});
 
       return response;
     } catch (error: any) {
@@ -33,25 +33,29 @@ export const Login = () => {
     }
   };
 
-  const login = useCallback(async (credencials: any) => {
+  const login = useCallback(async (credentials: any) => {
     try {
-      const {data}: any = await api.post('/api/login', credencials, {});
+      const {data}: any = await api.post('/api/login', credentials, {});
 
       await AsyncStorage.setItem('token', data.token);
     } catch (error: any) {
       console.log(error, 'usuário não cadastrado ou senha inválida');
+      const statusCode = error.data?.status;
+
+      if (statusCode === 401) {
+        navigation.navigate('Login' as any);
+      }
     }
   }, []);
 
   const handleValidAccount = async (values: any) => {
     await createAccount(values);
-
-    setIsAuthenticated(true);
+    setIsAccountExist(true);
   };
 
   const handleValidSubmit = async (values: any) => {
     await login(values);
-    dispatch(isLoading(true));
+    dispatch(setLoading(true));
 
     try {
       const token: any = await AsyncStorage.getItem('token');
@@ -66,12 +70,16 @@ export const Login = () => {
     navigation.navigate('Home' as any);
   };
 
+  const singIn = () => {
+    setIsAccountExist(true);
+  };
+
   const {values, handleChange, handleBlur, handleSubmit} = useFormik({
     initialValues: {
       user: '',
       password: '',
     },
-    onSubmit: !isAuthenticated ? handleValidAccount : handleValidSubmit,
+    onSubmit: !isAccountExist ? handleValidAccount : handleValidSubmit,
     validationSchema: loginSchema,
   });
 
@@ -92,9 +100,14 @@ export const Login = () => {
           onBlur={handleBlur('password')}
           onSubmitEditing={handleSubmit}
         />
+        {!isAccountExist && (
+          <LoginButton>
+            <LoginText onPress={handleSubmit}>Crie uma conta</LoginText>
+          </LoginButton>
+        )}
         <LoginButton>
-          <LoginText onPress={handleSubmit}>
-            {isAuthenticated ? 'Entrar' : 'Crie sua Conta'}
+          <LoginText onPress={() => (isAccountExist ? handleSubmit : singIn())}>
+            {isAccountExist ? 'Entrar' : 'Possui conta?'}
           </LoginText>
         </LoginButton>
       </ContentField>

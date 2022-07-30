@@ -1,6 +1,6 @@
 import {IS_LOADING} from './actionTypes';
 
-export function isLoading(loading: boolean) {
+export function setLoading(loading: boolean) {
   return {
     type: IS_LOADING,
     loading,
