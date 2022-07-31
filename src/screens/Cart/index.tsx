@@ -1,11 +1,11 @@
 import React from 'react';
-import {FlatListCarts} from '../../components/FlatListCart';
+import {CartItems} from '../../components/CartItems';
 import {Container} from '../../style/base';
 
 const Cart = () => {
   return (
     <Container>
-      <FlatListCarts />
+      <CartItems />
     </Container>
   );
 };

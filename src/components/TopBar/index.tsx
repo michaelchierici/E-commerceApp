@@ -1,11 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
-import Logo from '../../assets/logo.svg';
-import {Container} from './style';
-import {TouchableOpacity} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/native';
+import {TouchableOpacity} from 'react-native';
 import {IconButton} from 'react-native-paper';
+
+import {Container} from './style';
+import Logo from '../../assets/logo.svg';
+
 import {setAuth} from '../../store/actions';
 import {useDispatch} from 'react-redux';
 

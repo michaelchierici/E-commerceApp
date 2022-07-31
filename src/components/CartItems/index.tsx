@@ -19,7 +19,7 @@ import {
   TotalValue,
 } from './style';
 
-export const FlatListCarts = () => {
+export const CartItems = () => {
   const dispatch = useDispatch();
 
   const {itemAddedInCart}: any = useSelector(

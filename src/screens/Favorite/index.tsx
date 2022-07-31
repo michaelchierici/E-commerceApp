@@ -1,11 +1,11 @@
 import React from 'react';
-import {FlatListFavorites} from '../../components/FlatListFavorite';
+import {FavoritesItems} from '../../components/FavoriteList';
 import {Container} from '../../style/base';
 
 const Favorite = () => {
   return (
     <Container>
-      <FlatListFavorites />
+      <FavoritesItems />
     </Container>
   );
 };

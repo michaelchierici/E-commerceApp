@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
 
-import {FlatListProducts} from '../../components/FlatListProducts';
+import {Products} from '../../components/Products';
 import {StoreType} from '../../store';
 import {setLoading} from '../../store/actions';
 import {Container} from '../../style/base';
@@ -21,7 +21,7 @@ const Home = () => {
   }, [isLoading]);
   return (
     <Container>
-      <FlatListProducts />
+      <Products />
     </Container>
   );
 };
