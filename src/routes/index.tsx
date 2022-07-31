@@ -22,14 +22,17 @@ const Routes = () => {
   return (
     <NavigationContainer>
       {isLoading && <Loading />}
-      {!isAuthenticated ? (
-        <Login />
-      ) : (
+
+      {isAuthenticated ? (
         <Container>
           <TopBar />
           <MainScreens />
           <DataProvider />
           <NavigationBar />
+        </Container>
+      ) : (
+        <Container>
+          <Login />
         </Container>
       )}
     </NavigationContainer>

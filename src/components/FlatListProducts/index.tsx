@@ -41,7 +41,8 @@ export const FlatListProducts = () => {
   // 3º README com fotos do app;
   // 4º verificar o uso de id no front
   // 5º colocar valor total do carrinho no redux
-  // 6º trativa de erros no back e no front
+  // 6º trativa de erros no back(retorno de erro sobre usuário existente) e no front(exibir animação de erro)
+  // 7º Permanencia do usuário ao atualizar a página
 
   return (
     <>

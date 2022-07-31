@@ -4,13 +4,32 @@ import {useNavigation} from '@react-navigation/native';
 import Logo from '../../assets/logo.svg';
 import {Container} from './style';
 import {TouchableOpacity} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {IconButton} from 'react-native-paper';
+import {setAuth} from '../../store/actions';
+import {useDispatch} from 'react-redux';
 
 const TopBar = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const logout = () => {
+    AsyncStorage.clear();
+
+    dispatch(setAuth(false));
+  };
+
   return (
     <Container>
       <TouchableOpacity onPress={() => navigation.navigate('Home' as any)}>
         <Logo width={80} height={80} style={{margin: -10}} />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={logout}>
+        <IconButton
+          icon="logout"
+          color="white"
+          size={40}
+          style={{opacity: 0.5}}
+        />
       </TouchableOpacity>
     </Container>
   );

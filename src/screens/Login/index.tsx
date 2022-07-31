@@ -74,8 +74,6 @@ export const Login = () => {
       if (statusCode === 401) {
         dispatch(setAuth(false));
 
-        navigation.navigate('Login' as any);
-
         AsyncStorage.clear();
       }
     }
@@ -121,6 +119,7 @@ export const Login = () => {
           onChangeText={handleChange('password')}
           onBlur={handleBlur('password')}
           onSubmitEditing={handleSubmit}
+          secureTextEntry={true}
         />
         {!isAccountExist && (
           <LoginButton>
