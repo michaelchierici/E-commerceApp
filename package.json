@@ -32,6 +32,7 @@
     "react-native-safe-area-context": "^4.3.1",
     "react-native-svg": "^12.4.0",
     "react-native-svg-transformer": "^1.0.0",
+    "react-native-toast-message": "^2.1.5",
     "react-redux": "^8.0.2",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",

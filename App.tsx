@@ -1,4 +1,5 @@
 import React from 'react';
+import Toast from 'react-native-toast-message';
 import {Provider} from 'react-redux';
 
 import Routes from './src/routes/';
@@ -8,6 +9,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Routes />
+      <Toast />
     </Provider>
   );
 };
