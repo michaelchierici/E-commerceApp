@@ -1,13 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
+import React from 'react';
 import {Slider} from '@miblanchard/react-native-slider';
 import {useNavigation} from '@react-navigation/native';
 
-import React from 'react';
 import {FlatList, Image, TouchableOpacity} from 'react-native';
+import {IconButton} from 'react-native-paper';
 import {FavoriteIcon} from '../FavoriteIcons';
 
-import {IconButton} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 import {StoreType} from '../../store';
@@ -28,7 +27,7 @@ import {
   FavoriteButton,
 } from './style';
 
-export const FlatListProducts = () => {
+export const Products = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
@@ -42,7 +41,7 @@ export const FlatListProducts = () => {
   // 4º verificar o uso de id no front
   // 5º colocar valor total do carrinho no redux
   // 6º trativa de erros no back(retorno de erro sobre usuário existente) e no front(exibir animação de erro)
-  // 7º Permanencia do usuário ao atualizar a página
+  // 8º interceptors
 
   return (
     <>

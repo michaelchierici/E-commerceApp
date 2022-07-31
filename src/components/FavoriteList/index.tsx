@@ -18,7 +18,7 @@ import {
   TopSection,
 } from './style';
 
-export const FlatListFavorites = () => {
+export const FavoritesItems = () => {
   const dispatch = useDispatch();
 
   const {favItem}: any = useSelector(

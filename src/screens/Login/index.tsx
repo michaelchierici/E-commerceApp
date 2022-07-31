@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
 import React, {useCallback, useEffect, useState} from 'react';
+import {api} from '../../services/api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Container} from '../../style/base';
 import {
   ContentField,
@@ -9,17 +11,21 @@ import {
   PasswordInput,
   UserNameInput,
 } from './style';
+
+import {useNavigation} from '@react-navigation/native';
+
 import Logo from '../../assets/pokeballLogin.svg';
+
 import {loginSchema} from '../../util/loginSchema';
 import {useFormik} from 'formik';
-import {useNavigation} from '@react-navigation/native';
-import {api} from '../../services/api';
+
+import {useDispatch, useSelector} from 'react-redux';
+
 import {setLoading, setItemsLists} from '../../store/actions';
-import {useDispatch} from 'react-redux';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {setAuth} from '../../store/auth/action';
 import {StoreType} from '../../store';
-import {useSelector} from 'react-redux';
+import {IconButton} from 'react-native-paper';
+import {TouchableOpacity} from 'react-native';
 
 export const Login = () => {
   const navigation = useNavigation();
@@ -28,6 +34,7 @@ export const Login = () => {
     (state: StoreType) => state.loadingReducer,
   );
   const [isAccountExist, setIsAccountExist] = useState(false);
+  const [isNewAccount, setIsNewAccount] = useState(true);
 
   const createAccount = async (credentials: any) => {
     try {
@@ -35,10 +42,10 @@ export const Login = () => {
 
       return response;
     } catch (error: any) {
-      const statusCode = error.status;
-      console.log(error, 'erro na req');
-      if (statusCode === 401) {
-        console.log(error, 'nome de usuário já existe');
+      const description = await error.code;
+
+      if (description === 'ERR_BAD_REQUEST') {
+        console.log(await error, 'nome de usuário já existe');
       }
     }
   };
@@ -58,8 +65,8 @@ export const Login = () => {
 
   const handleValidSubmit = async (values: any) => {
     await login(values);
-
     dispatch(setLoading(true));
+
     try {
       const token: any = await AsyncStorage.getItem('token');
       const response: any = await api.get('/api/pokemons', {
@@ -69,11 +76,10 @@ export const Login = () => {
       dispatch(setAuth(true));
       dispatch(setItemsLists(await response.data));
     } catch (error: any) {
-      const statusCode = error?.status;
+      const description = error.code;
 
-      if (statusCode === 401) {
+      if (description === 'ERR_BAD_REQUEST') {
         dispatch(setAuth(false));
-
         AsyncStorage.clear();
       }
     }
@@ -121,9 +127,15 @@ export const Login = () => {
           onSubmitEditing={handleSubmit}
           secureTextEntry={true}
         />
-        {!isAccountExist && (
+        {isNewAccount && (
           <LoginButton>
-            <LoginText onPress={handleSubmit}>Crie uma conta</LoginText>
+            <LoginText
+              onPress={async () => {
+                handleSubmit();
+                setIsNewAccount(false);
+              }}>
+              {isNewAccount ? 'Crie sua Conta' : 'Entrar'}
+            </LoginText>
           </LoginButton>
         )}
         <LoginButton>
@@ -131,6 +143,11 @@ export const Login = () => {
             {isAccountExist ? 'Entrar' : 'Possui conta?'}
           </LoginText>
         </LoginButton>
+        {!isNewAccount && (
+          <TouchableOpacity onPress={() => setIsNewAccount(true)}>
+            <IconButton icon="arrow-left-thin" color="#1e1e" />
+          </TouchableOpacity>
+        )}
       </ContentField>
     </Container>
   );
