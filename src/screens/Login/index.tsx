@@ -26,6 +26,7 @@ import {setAuth} from '../../store/auth/action';
 import {StoreType} from '../../store';
 import {IconButton} from 'react-native-paper';
 import {TouchableOpacity} from 'react-native';
+import {showToast} from '../../util/toasts';
 
 export const Login = () => {
   const navigation = useNavigation();
@@ -39,13 +40,13 @@ export const Login = () => {
   const createAccount = async (credentials: any) => {
     try {
       const response = await api.post('/api/trainer', credentials, {});
-
+      showToast('Usuário cadastrado com sucesso!', 'success');
       return response;
     } catch (error: any) {
       const description = await error.code;
 
       if (description === 'ERR_BAD_REQUEST') {
-        console.log(await error, 'nome de usuário já existe');
+        showToast('Nome de usuário já existe, faça login!', 'info');
       }
     }
   };
@@ -58,7 +59,7 @@ export const Login = () => {
 
       dispatch(setAuth(true));
     } catch (error: any) {
-      console.log(error, 'usuário não cadastrado ou senha inválida');
+      showToast('usuário não cadastrado ou senha inválida!', 'error');
       setIsAccountExist(false);
     }
   }, []);

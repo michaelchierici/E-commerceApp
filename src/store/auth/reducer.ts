@@ -15,7 +15,7 @@ const authReducer = (
   switch (action.type) {
     case IS_AUTHENTICATED: {
       const isAuthenticated = action.isAuthenticated;
-      console.log(action.isAuthenticated);
+
       return {
         ...state,
         isAuthenticated,

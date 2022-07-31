@@ -36,12 +36,9 @@ export const Products = () => {
   );
 
   // 1º botão de finalização de compra com animação;
-  // 2º expandir imagem e mostrar descrição;
-  // 3º README com fotos do app;
-  // 4º verificar o uso de id no front
-  // 5º colocar valor total do carrinho no redux
-  // 6º trativa de erros no back(retorno de erro sobre usuário existente) e no front(exibir animação de erro)
-  // 8º interceptors
+  // 2º README com fotos do app;
+  // 3º verificar o uso de id no front
+  // 4º colocar valor total do carrinho no redux
 
   return (
     <>
