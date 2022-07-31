@@ -10,7 +10,6 @@ const Stack = createStackNavigator();
 export default function MainScreens() {
   return (
     <Stack.Navigator
-      initialRouteName="Login"
       screenOptions={{
         headerShown: false,
       }}>
