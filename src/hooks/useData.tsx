@@ -18,15 +18,12 @@ const DataProvider: any = () => {
   const {isLoading}: any = useSelector(
     (state: StoreType) => state.loadingReducer,
   );
-  const {isAuthenticated}: any = useSelector(
-    (state: StoreType) => state.authReducer,
-  );
 
   useEffect(() => {
     setTimeout(() => {
       dispatch(setLoading(false));
     }, 2000);
-  }, [isLoading, isAuthenticated]);
+  }, [isLoading]);
 
   return <dataContext.Provider value={{catchData, setData}} />;
 };
