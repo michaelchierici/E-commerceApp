@@ -5,11 +5,12 @@ import {api} from '../../services/api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Container} from '../../style/base';
 import {
+  ArrowButton,
   ContentField,
+  CredentialInput,
   LoginButton,
   LoginText,
-  PasswordInput,
-  UserNameInput,
+  MakeAccount,
 } from './style';
 
 import {useNavigation} from '@react-navigation/native';
@@ -25,7 +26,6 @@ import {setLoading, setItemsLists} from '../../store/actions';
 import {setAuth} from '../../store/auth/action';
 import {StoreType} from '../../store';
 import {IconButton} from 'react-native-paper';
-import {TouchableOpacity} from 'react-native';
 import {showToast} from '../../util/toasts';
 
 export const Login = () => {
@@ -111,43 +111,47 @@ export const Login = () => {
   }, [isLoading]);
 
   return (
-    <Container style={{alignItems: 'center', justifyContent: 'center'}}>
+    <Container
+      style={{
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#393e46',
+      }}>
       <ContentField>
         <Logo width={100} height={100} />
-        <UserNameInput
+        <CredentialInput
           placeholder="Username"
           value={values?.user}
           onChangeText={handleChange('user')}
           onBlur={handleBlur('user')}
+          placeholderTextColor="#ddd"
         />
-        <PasswordInput
+        <CredentialInput
           placeholder="Senha"
           value={values?.password}
           onChangeText={handleChange('password')}
           onBlur={handleBlur('password')}
           onSubmitEditing={handleSubmit}
           secureTextEntry={true}
+          placeholderTextColor="#ddd"
         />
-        {isNewAccount && (
-          <LoginButton>
-            <LoginText
-              onPress={async () => {
-                handleSubmit();
-                setIsNewAccount(false);
-              }}>
-              {isNewAccount ? 'Crie sua Conta' : 'Entrar'}
-            </LoginText>
-          </LoginButton>
-        )}
-        <LoginButton>
-          <LoginText onPress={() => (isAccountExist ? handleSubmit : singIn())}>
-            {isAccountExist ? 'Entrar' : 'Possui conta?'}
-          </LoginText>
+
+        <LoginButton onPress={() => (isAccountExist ? handleSubmit : singIn())}>
+          <LoginText>{isAccountExist ? 'Entrar' : 'Possui conta?'}</LoginText>
         </LoginButton>
         {!isNewAccount && (
-          <TouchableOpacity onPress={() => setIsNewAccount(true)}>
-            <IconButton icon="arrow-left-thin" color="#1e1e" />
-          </TouchableOpacity>
+          <ArrowButton onPress={() => setIsNewAccount(true)}>
+            <IconButton icon="arrow-left-thin" color="#fff" />
+          </ArrowButton>
+        )}
+        {isNewAccount && (
+          <MakeAccount
+            onPress={async () => {
+              handleSubmit();
+              setIsNewAccount(false);
+            }}>
+            <LoginText>{isNewAccount ? 'Crie sua Conta' : 'Entrar'}</LoginText>
+          </MakeAccount>
         )}
       </ContentField>
     </Container>
