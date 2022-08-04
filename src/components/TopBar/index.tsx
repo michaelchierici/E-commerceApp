@@ -26,12 +26,7 @@ const TopBar = () => {
         <Logo width={80} height={80} style={{margin: -10}} />
       </TouchableOpacity>
       <TouchableOpacity onPress={logout}>
-        <IconButton
-          icon="logout"
-          color="white"
-          size={40}
-          style={{opacity: 0.5}}
-        />
+        <IconButton icon="logout" color="#06d6a0" size={40} />
       </TouchableOpacity>
     </Container>
   );

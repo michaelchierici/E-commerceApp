@@ -115,7 +115,7 @@ export const Login = () => {
       style={{
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#393e46',
+        backgroundColor: '#001219',
       }}>
       <ContentField>
         <Logo width={100} height={100} />
@@ -124,7 +124,7 @@ export const Login = () => {
           value={values?.user}
           onChangeText={handleChange('user')}
           onBlur={handleBlur('user')}
-          placeholderTextColor="#ddd"
+          placeholderTextColor="#c0c0c0"
         />
         <CredentialInput
           placeholder="Senha"
@@ -133,11 +133,13 @@ export const Login = () => {
           onBlur={handleBlur('password')}
           onSubmitEditing={handleSubmit}
           secureTextEntry={true}
-          placeholderTextColor="#ddd"
+          placeholderTextColor="#c0c0c0"
         />
 
         <LoginButton onPress={() => (isAccountExist ? handleSubmit : singIn())}>
-          <LoginText>{isAccountExist ? 'Entrar' : 'Possui conta?'}</LoginText>
+          <LoginText style={{color: 'black'}}>
+            {isAccountExist ? 'Entrar' : 'Possui conta?'}
+          </LoginText>
         </LoginButton>
         {!isNewAccount && (
           <ArrowButton onPress={() => setIsNewAccount(true)}>
