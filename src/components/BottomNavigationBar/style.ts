@@ -4,7 +4,7 @@ export const Section = styled.View`
   align-items: center;
   justify-content: center;
   width: 100%;
-  background-color: #0d0d0d;
+  background-color: #001219;
 `;
 
 export const CardButtons = styled.TouchableOpacity`

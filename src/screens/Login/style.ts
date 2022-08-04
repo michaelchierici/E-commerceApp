@@ -1,4 +1,10 @@
+import React from 'react';
+
 import styled from 'styled-components/native';
+
+export interface Props {
+  leftIcon?: React.ReactNode;
+}
 
 export const ContentField = styled.View`
   align-items: center;
@@ -7,26 +13,27 @@ export const ContentField = styled.View`
   width: 350px;
   border-radius: 15px;
   flex-direction: column;
-  background-color: rgba(2, 500, 900, 0.1);
+  background-color: #000814;
 `;
 
-export const CredentialInput = styled.TextInput`
+export const CredentialInput = styled.TextInput<Props>`
   width: 80%;
-  background-color: rgba(7, 1, 1, 0.1);
-  border-radius: 10px;
+  background-color: #4f5d75;
+  border-radius: 8px;
   font-size: 16px;
-  height: 46px;
+  height: 48px;
   padding-left: 15px;
   font-family: 'System';
   font-size: 16px;
   font-weight: bold;
+  border: 2px solid #1d3557;
 `;
 
 export const LoginButton = styled.TouchableOpacity`
   width: 60%;
   font-size: 16px;
   height: 50px;
-  background-color: rgba(2, 500, 900, 0.1);
+  background-color: #06d6a0;
   border-radius: 10px;
   align-items: center;
   justify-content: center;
@@ -36,7 +43,7 @@ export const LoginText = styled.Text`
   font-family: 'System';
   font-size: 16px;
   font-weight: bold;
-  color: #ddd;
+  color: #06d6a0;
 `;
 
 export const ArrowButton = styled.TouchableOpacity`
@@ -51,8 +58,7 @@ export const ArrowButton = styled.TouchableOpacity`
 
 export const MakeAccount = styled.Text`
   font-family: 'System';
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
-  color: #000000;
   text-decoration: underline;
 `;
