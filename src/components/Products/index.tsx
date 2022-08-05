@@ -35,11 +35,6 @@ export const Products = () => {
     (state: StoreType) => state.productsReducer,
   );
 
-  // 1º botão de finalização de compra com animação;
-  // 2º README com fotos do app;
-  // 3º verificar o uso de id no front
-  // 4º colocar valor total do carrinho no redux
-
   return (
     <>
       <FlatList
@@ -58,7 +53,10 @@ export const Products = () => {
               <SectionDetail>
                 <FavoriteButton>
                   <ProductName>{item.name}</ProductName>
-                  <TouchableOpacity onPress={() => dispatch(addToFav(item))}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      dispatch(addToFav(item));
+                    }}>
                     <FavoriteIcon type={item.type} />
                   </TouchableOpacity>
                 </FavoriteButton>
@@ -76,12 +74,7 @@ export const Products = () => {
                 trackClickable={false}
                 onSlidingComplete={() => {
                   dispatch(
-                    addToCart(
-                      (item.id = Math.random()),
-                      item.name,
-                      item.price,
-                      item.ammount,
-                    ),
+                    addToCart(item.id, item.name, item.price, item.ammount),
                   );
 
                   navigation.navigate('Cart' as any);
@@ -93,7 +86,7 @@ export const Products = () => {
                       onPress={() => {
                         dispatch(
                           addToCart(
-                            (item.id = Math.random()),
+                            item.id,
                             item.name,
                             item.price,
                             item.ammount,
