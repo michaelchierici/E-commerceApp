@@ -1,8 +1,9 @@
 import {IS_AUTHENTICATED} from './actionTypes';
 
-export function setAuth(isAuthenticated: boolean) {
+export function setAuth(trainer: any, password: any) {
   return {
     type: IS_AUTHENTICATED,
-    isAuthenticated,
+    trainer,
+    password,
   };
 }
