@@ -5,7 +5,6 @@ import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native';
 import {IconButton} from 'react-native-paper';
 
-import {Container} from './style';
 import Logo from '../../assets/logo.svg';
 
 import {setAuth} from '../../store/actions';
@@ -21,14 +20,14 @@ const TopBar = () => {
   };
 
   return (
-    <Container>
+    <>
       <TouchableOpacity onPress={() => navigation.navigate('Home' as any)}>
         <Logo width={80} height={80} style={{margin: -10}} />
       </TouchableOpacity>
       <TouchableOpacity onPress={logout}>
         <IconButton icon="logout" color="#06d6a0" size={40} />
       </TouchableOpacity>
-    </Container>
+    </>
   );
 };
 

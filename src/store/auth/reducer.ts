@@ -2,10 +2,14 @@ import {IS_AUTHENTICATED} from './actionTypes';
 
 export interface AUTH_STATE_PROPS {
   isAuthenticated: boolean;
+  trainer: any;
+  password: any;
 }
 
 export const AUTH_REDUCER_INITIAL_STATE: AUTH_STATE_PROPS = {
   isAuthenticated: false,
+  trainer: '',
+  password: '',
 };
 
 const authReducer = (
@@ -14,11 +18,12 @@ const authReducer = (
 ): AUTH_STATE_PROPS => {
   switch (action.type) {
     case IS_AUTHENTICATED: {
-      const isAuthenticated = action.isAuthenticated;
-
+      const {trainer, password} = action.isAuthenticated;
+      console.log(action);
       return {
         ...state,
-        isAuthenticated,
+        trainer,
+        password,
       };
     }
 

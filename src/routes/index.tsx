@@ -1,42 +1,16 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
-import NavigationBar from '../components/BottomNavigationBar';
-import {Loading} from '../components/AnimationLoading';
-import TopBar from '../components/TopBar';
-import DataProvider from '../hooks/useData';
-import {Login} from '../screens/Login';
-import MainScreens from './Screen.routes';
+import {useAuth} from '../hooks/useAuth';
+import AppRoutes from './app.routes';
+import AuthRoutes from './auth.routes';
 
-import {useSelector} from 'react-redux';
-import {StoreType} from '../store';
-import {Container} from '../style/base';
+export function Routes() {
+  const {user} = useAuth();
 
-const Routes = () => {
-  const {isLoading}: any = useSelector(
-    (state: StoreType) => state.loadingReducer,
-  );
-  const {isAuthenticated}: any = useSelector(
-    (state: StoreType) => state.authReducer,
-  );
   return (
     <NavigationContainer>
-      {isLoading && <Loading />}
-
-      {isAuthenticated ? (
-        <Container>
-          <TopBar />
-          <MainScreens />
-          <DataProvider />
-          <NavigationBar />
-        </Container>
-      ) : (
-        <Container>
-          <Login />
-        </Container>
-      )}
+      {user.token ? <AppRoutes /> : <AuthRoutes />}
     </NavigationContainer>
   );
-};
-
-export default Routes;
+}
