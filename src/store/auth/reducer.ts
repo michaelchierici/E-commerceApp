@@ -19,7 +19,6 @@ const authReducer = (
   switch (action.type) {
     case IS_AUTHENTICATED: {
       const {trainer, password} = action.isAuthenticated;
-      console.log(action);
       return {
         ...state,
         trainer,

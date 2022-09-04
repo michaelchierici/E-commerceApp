@@ -5,18 +5,17 @@ import {
   REMOVE_FROM_CART,
 } from '../cart/actionTypes';
 
-export function addToCart(
-  id: number,
-  name: string,
-  price: number,
-  ammount: number,
-) {
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  ammount: number;
+}
+
+export function addToCart(item: Product) {
   return {
     type: ADD_TO_CART,
-    id,
-    name,
-    price,
-    ammount,
+    item,
   };
 }
 

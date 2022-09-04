@@ -52,6 +52,7 @@ export function AuthProvider({children}: AuthProps) {
       showToast('usuário não cadastrado ou senha inválida!', 'error');
     }
   }
+
   async function signOut() {
     setUser({} as User);
     Token.removeToken(userStorageKey);

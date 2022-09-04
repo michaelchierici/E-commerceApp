@@ -28,8 +28,7 @@ export const CART_REDUCER_INITIAL_STATE = {
 const cartReducer = (state = CART_REDUCER_INITIAL_STATE, action: any) => {
   switch (action.type) {
     case ADD_TO_CART: {
-      const itemAddedInCart = action;
-      console.log(itemAddedInCart);
+      const itemAddedInCart = action.item;
       return {
         ...state,
         itemAddedInCart: [...state.itemAddedInCart, itemAddedInCart],

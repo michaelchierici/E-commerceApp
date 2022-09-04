@@ -4,11 +4,26 @@ import styled from 'styled-components/native';
 
 export interface Props {
   leftIcon?: React.ReactNode;
+  type?: 'newUser' | 'oldUser';
 }
 
-export const ContentField = styled.View`
+export const Container = styled.View`
+  flex: 1;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  width: 100%;
+  background-color: #000814;
+`;
+
+export const Header = styled.View`
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Content = styled.View`
+  align-items: center;
+  justify-content: center;
   height: 450px;
   width: 350px;
   border-radius: 15px;
@@ -16,7 +31,9 @@ export const ContentField = styled.View`
   background-color: #000814;
 `;
 
-export const CredentialInput = styled.TextInput<Props>`
+export const Input = styled.TextInput.attrs({
+  placeholderTextColor: '#c0c0c0',
+})<Props>`
   width: 80%;
   background-color: #4f5d75;
   border-radius: 8px;
@@ -27,9 +44,16 @@ export const CredentialInput = styled.TextInput<Props>`
   font-size: 16px;
   font-weight: bold;
   border: 2px solid #1d3557;
+  margin: 10px 0;
 `;
 
-export const LoginButton = styled.TouchableOpacity`
+export const Footer = styled.View`
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Button = styled.TouchableOpacity`
   width: 60%;
   font-size: 16px;
   height: 50px;
@@ -37,13 +61,14 @@ export const LoginButton = styled.TouchableOpacity`
   border-radius: 10px;
   align-items: center;
   justify-content: center;
+  margin: 20px 0;
 `;
 
-export const LoginText = styled.Text`
+export const Title = styled.Text<Props>`
   font-family: 'System';
   font-size: 16px;
   font-weight: bold;
-  color: #06d6a0;
+  color: ${({type}) => (type === 'newUser' ? '#06d6a0' : 'black')};
 `;
 
 export const ArrowButton = styled.TouchableOpacity`
@@ -54,11 +79,13 @@ export const ArrowButton = styled.TouchableOpacity`
   border-radius: 40px;
   align-items: center;
   justify-content: center;
+  margin: 5px 0;
 `;
 
-export const MakeAccount = styled.Text`
+export const SubTitle = styled.Text<Props>`
   font-family: 'System';
   font-size: 18px;
   font-weight: bold;
   text-decoration: underline;
+  color: ${({type}) => (type === 'newUser' ? '#06d6a0' : 'black')};
 `;

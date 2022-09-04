@@ -1,16 +1,15 @@
 import {SET_ITEMS_LIST} from './actionTypes';
 
-export function setItemsLists(
-  id?: number,
-  name?: string,
-  price?: number,
-  ammount?: number,
-) {
+interface Product {
+  id?: number;
+  name?: string;
+  price?: number;
+  ammount?: number;
+}
+
+export function setItemsLists(item: Product) {
   return {
     type: SET_ITEMS_LIST,
-    payload: id,
-    name,
-    price,
-    ammount,
+    item,
   };
 }
