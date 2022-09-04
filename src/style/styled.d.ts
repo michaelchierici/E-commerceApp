@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import styled from 'styled-components';
-
 import theme from './theme';
 
 declare module 'styled-components' {

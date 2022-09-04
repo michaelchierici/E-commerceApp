@@ -1,13 +1,15 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {
   ArrowButton,
-  ContentField,
-  CredentialInput,
-  LoginButton,
-  LoginText,
-  MakeAccount,
-} from './style';
+  Container,
+  Content,
+  Header,
+  Button,
+  Title,
+  Footer,
+  Input,
+  SubTitle,
+} from './styles';
 
 import Logo from '../../assets/pokeballLogin.svg';
 
@@ -16,9 +18,9 @@ import {useFormik} from 'formik';
 
 import {IconButton} from 'react-native-paper';
 import {useAuth} from '../../hooks/useAuth';
+import {StatusBar} from 'react-native';
 
 export const SignIn = () => {
-  const [isAccountExist, setIsAccountExist] = useState(false);
   const [isNewAccount, setIsNewAccount] = useState(true);
 
   const {login} = useAuth();
@@ -28,10 +30,6 @@ export const SignIn = () => {
       return;
     }
     await login(user, password);
-  };
-
-  const singIn = () => {
-    setIsAccountExist(true);
   };
 
   const {values, handleChange, handleBlur, handleSubmit} = useFormik({
@@ -44,44 +42,52 @@ export const SignIn = () => {
   });
 
   return (
-    <ContentField>
-      <Logo width={100} height={100} />
-      <CredentialInput
-        placeholder="Username"
-        value={values?.user}
-        onChangeText={handleChange('user')}
-        onBlur={handleBlur('user')}
-        placeholderTextColor="#c0c0c0"
+    <Container>
+      <StatusBar
+        barStyle="light-content"
+        translucent
+        backgroundColor="transparent"
       />
-      <CredentialInput
-        placeholder="Senha"
-        value={values?.password}
-        onChangeText={handleChange('password')}
-        onBlur={handleBlur('password')}
-        onSubmitEditing={handleSubmit}
-        secureTextEntry={true}
-        placeholderTextColor="#c0c0c0"
-      />
+      <Content>
+        <Header>
+          <Logo width={100} height={100} />
+        </Header>
+        <Input
+          placeholder="Username"
+          value={values?.user}
+          onChangeText={handleChange('user')}
+          onBlur={handleBlur('user')}
+        />
+        <Input
+          placeholder="Senha"
+          value={values?.password}
+          onChangeText={handleChange('password')}
+          onBlur={handleBlur('password')}
+          onSubmitEditing={handleSubmit}
+          secureTextEntry={true}
+        />
+        <Footer>
+          <Button onPress={() => handleSubmit()}>
+            <Title type="oldUser">Entrar</Title>
+          </Button>
 
-      <LoginButton onPress={() => (isAccountExist ? handleSubmit : singIn())}>
-        <LoginText style={{color: 'black'}}>
-          {isAccountExist ? 'Entrar' : 'Possui conta?'}
-        </LoginText>
-      </LoginButton>
-      {!isNewAccount && (
-        <ArrowButton onPress={() => setIsNewAccount(true)}>
-          <IconButton icon="arrow-left-thin" color="#fff" />
-        </ArrowButton>
-      )}
-      {isNewAccount && (
-        <MakeAccount
-          onPress={async () => {
-            handleSubmit();
-            setIsNewAccount(false);
-          }}>
-          <LoginText>{isNewAccount ? 'Crie sua Conta' : 'Entrar'}</LoginText>
-        </MakeAccount>
-      )}
-    </ContentField>
+          {!isNewAccount && (
+            <ArrowButton onPress={() => setIsNewAccount(true)}>
+              <IconButton icon="arrow-left-thin" color="#fff" />
+            </ArrowButton>
+          )}
+          {isNewAccount && (
+            <SubTitle
+              type="newUser"
+              onPress={async () => {
+                handleSubmit();
+                setIsNewAccount(false);
+              }}>
+              <Title type="newUser">Crie sua Conta</Title>
+            </SubTitle>
+          )}
+        </Footer>
+      </Content>
+    </Container>
   );
 };

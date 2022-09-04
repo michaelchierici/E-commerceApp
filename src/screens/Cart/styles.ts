@@ -1,31 +1,41 @@
 import styled from 'styled-components/native';
 
-export const TopSection = styled.View`
+interface Props {
+  type: 'minus' | 'delete';
+}
+
+export const Container = styled.View`
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly
+  background-color: #393e46;
+  flex: 1;
+`;
+
+export const Header = styled.View`
+  width: 100%;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
 `;
+
 export const Title = styled.Text`
   color: #fff;
   font-size: 20px;
   font-weight: bold;
   font-family: 'System';
+  margin-left: 10px;
 `;
 
-export const CardList = styled.View`
+export const Content = styled.View`
   background-color: #393e46;
-  align-items: flex-start;
   justify-content: center;
-  width: 85%;
-  height: 70%;
-  border-radius: 10px;
+  align-items: flex-start;
   flex-direction: row;
-  padding: 15px;
-  border: 1px solid #32e0c4;
+
+  width: 85%;
+  height: 80%;
+  border-radius: 10px;
   elevation: 8;
-  position: absolute;
-  left: 7.5%;
-  top: 10%;
 `;
 
 export const Cards = styled.View`
@@ -38,27 +48,6 @@ export const Cards = styled.View`
   flex-direction: row;
   margin: 10px;
   elevation: 8;
-`;
-
-export const CardsRemoved = styled.View`
-  background-color: #000;
-  border-radius: 20px;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  width: 95%;
-  flex-direction: row;
-  margin: 10px;
-  opacity: 0.2;
-`;
-
-export const ItemTitle = styled.Text`
-  color: #fff;
-  font-size: 20px;
-  line-height: 25px;
-  font-weight: bold;
-  font-family: 'System';
-  margin-left: 10px;
 `;
 
 export const ControlButtons = styled.View`
@@ -77,6 +66,15 @@ export const ButtonAdd = styled.TouchableOpacity`
   background-color: #fff;
 `;
 
+export const Button = styled.TouchableOpacity<Props>`
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  background-color: #fff;
+`;
+
 export const ButtonRemove = styled.TouchableOpacity`
   width: 30px;
   height: 30px;
@@ -86,16 +84,13 @@ export const ButtonRemove = styled.TouchableOpacity`
   background-color: #fff;
 `;
 
-export const CardPrice = styled.View`
-  background-color: #000;
-  border-radius: 20px;
+export const Footer = styled.View`
+  width: 50%;
   align-items: center;
   justify-content: center;
-  width: 70%;
-  height: 50px;
-  flex-direction: row;
-  position: absolute;
-  bottom: -15%;
+  background-color: #000;
+  border-radius: 10px;
+  height: 30px;
 `;
 
 export const TotalValue = styled.Text`
