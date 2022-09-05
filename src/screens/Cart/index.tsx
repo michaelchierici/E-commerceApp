@@ -10,21 +10,15 @@ import {formatMoney} from '../../util/formatMoney';
 
 import {
   Cards,
-  ControlButtons,
-  ButtonAdd,
-  Header,
   Container,
   Title,
   Content,
   Footer,
   Button,
+  ContentButtons,
 } from './styles';
 
-interface ButtonsProps {
-  type: 'minus' | 'delete' | 'add';
-}
-
-const Cart = ({type}: ButtonsProps) => {
+const Cart = () => {
   const dispatch = useDispatch();
 
   const {itemAddedInCart}: any = useSelector(
@@ -55,7 +49,6 @@ const Cart = ({type}: ButtonsProps) => {
         translucent
         backgroundColor="transparent"
       />
-      <Header />
       <Content>
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -65,15 +58,15 @@ const Cart = ({type}: ButtonsProps) => {
             <Cards>
               <Title>{item.name}</Title>
               <Title>{item.ammount}</Title>
-              <ControlButtons>
-                <Button type={item.ammount <= 0 ? 'minus' : 'delete'}>
+              <ContentButtons>
+                <Button>
                   <IconButton
                     icon={
-                      item.ammount <= 0 ? 'minus-circle-outline' : 'trash-can'
+                      item.ammount <= 0 ? 'trash-can' : 'minus-circle-outline'
                     }
                     size={30}
                     onPress={() => {
-                      type !== 'delete'
+                      item.ammount > 0
                         ? (dispatch(delAmmount(item.ammount--)),
                           setTotalResult(totalResult - item.price))
                         : dispatch(
@@ -86,7 +79,7 @@ const Cart = ({type}: ButtonsProps) => {
                     }}
                   />
                 </Button>
-                <ButtonAdd>
+                <Button>
                   <IconButton
                     icon={'plus-circle-outline'}
                     size={30}
@@ -95,8 +88,8 @@ const Cart = ({type}: ButtonsProps) => {
                       dispatch(addAmmount(item.ammount++));
                     }}
                   />
-                </ButtonAdd>
-              </ControlButtons>
+                </Button>
+              </ContentButtons>
             </Cards>
           )}
         />

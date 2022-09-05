@@ -1,12 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {FlatList} from 'react-native';
 
 import {useAuth} from '../../hooks/useAuth';
 import {api} from '../../services/api';
-import {addToFav, setItemsLists, setLoading} from '../../store/actions';
+import {addToFav, setItemsLists} from '../../store/actions';
 import {
   Button,
   Container,
@@ -24,12 +24,10 @@ import LogOff from '../../components/Logout';
 import {Loading} from '../../components/Loading';
 
 const Home = () => {
+  const [loading, setLoading] = useState(false);
+
   const {setItemInProductsList}: any = useSelector(
     (state: StoreType) => state.productsReducer,
-  );
-
-  const {loading}: any = useSelector(
-    (state: StoreType) => state.loadingReducer,
   );
 
   const dispatch = useDispatch();
@@ -39,7 +37,7 @@ const Home = () => {
     if (!user.id) {
       return;
     }
-    dispatch(setLoading(true));
+    setLoading(true);
     async function fetchProducts() {
       try {
         const response = await api.get('/api/pokemons', {
@@ -50,7 +48,7 @@ const Home = () => {
       } catch (error) {
         console.log(error);
       } finally {
-        dispatch(setLoading(false));
+        setLoading(false);
       }
     }
     fetchProducts();
