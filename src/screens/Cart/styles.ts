@@ -1,9 +1,5 @@
 import styled from 'styled-components/native';
 
-interface Props {
-  type: 'minus' | 'delete';
-}
-
 export const Container = styled.View`
   width: 100%;
   align-items: center;
@@ -50,32 +46,15 @@ export const Cards = styled.View`
   elevation: 8;
 `;
 
-export const ControlButtons = styled.View`
+export const ContentButtons = styled.View`
   height: 9px;
   width: 80px;
   align-items: center;
   justify-content: space-around;
   flex-direction: row;
 `;
-export const ButtonAdd = styled.TouchableOpacity`
-  width: 30px;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50px;
-  background-color: #fff;
-`;
 
-export const Button = styled.TouchableOpacity<Props>`
-  width: 30px;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50px;
-  background-color: #fff;
-`;
-
-export const ButtonRemove = styled.TouchableOpacity`
+export const Button = styled.TouchableOpacity`
   width: 30px;
   height: 30px;
   align-items: center;

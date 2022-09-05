@@ -6,17 +6,14 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Platform} from 'react-native';
 import {useTheme} from 'styled-components/native';
 import {IconButton} from 'react-native-paper';
-import {useSelector} from 'react-redux';
-import {StoreType} from '../store';
+import {useAuth} from '../hooks/useAuth';
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
 const AppRoutes = () => {
   const theme = useTheme();
-
-  const {loading}: any = useSelector(
-    (state: StoreType) => state.loadingReducer,
-  );
+  const {loading} = useAuth();
+  console.log(loading);
 
   return (
     <Navigator
