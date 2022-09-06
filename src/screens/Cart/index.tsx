@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {FlatList, StatusBar} from 'react-native';
 import {IconButton} from 'react-native-paper';
@@ -16,6 +17,15 @@ import {
   Footer,
   Button,
   ContentButtons,
+  Header,
+  Photo,
+  Summary,
+  Value,
+  SubTitle,
+  ButtonCheckout,
+  Ammount,
+  Top,
+  CheckoutContent,
 } from './styles';
 
 const Cart = () => {
@@ -49,6 +59,9 @@ const Cart = () => {
         translucent
         backgroundColor="transparent"
       />
+      <Top>
+        <Title>Shop</Title>
+      </Top>
       <Content>
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -56,29 +69,43 @@ const Cart = () => {
           keyExtractor={(item, index) => `${item.id}${index}`}
           renderItem={({item}) => (
             <Cards>
-              <Title>{item.name}</Title>
-              <Title>{item.ammount}</Title>
+              <Photo
+                source={{
+                  uri: item?.img,
+                }}
+                style={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: 10,
+                  marginRight: 'auto',
+                }}
+              />
+              <Header>
+                <Title>{item.name}</Title>
+                <SubTitle>{formatMoney(item.price)}</SubTitle>
+              </Header>
               <ContentButtons>
                 <Button>
                   <IconButton
                     icon={
-                      item.ammount <= 0 ? 'trash-can' : 'minus-circle-outline'
+                      item.ammount <= 1 ? 'trash-can' : 'minus-circle-outline'
                     }
                     size={30}
                     onPress={() => {
-                      item.ammount > 0
-                        ? (dispatch(delAmmount(item.ammount--)),
-                          setTotalResult(totalResult - item.price))
-                        : dispatch(
+                      item.ammount <= 1
+                        ? dispatch(
                             removeFromCart(
                               itemAddedInCart.filter(
                                 (delItem: any) => item.id !== delItem.id,
                               ),
                             ),
-                          );
+                          )
+                        : (dispatch(delAmmount(item.ammount--)),
+                          setTotalResult(totalResult - item.price));
                     }}
                   />
                 </Button>
+                <Ammount>{item.ammount}</Ammount>
                 <Button>
                   <IconButton
                     icon={'plus-circle-outline'}
@@ -95,7 +122,15 @@ const Cart = () => {
         />
       </Content>
       <Footer>
-        <Title>{formatMoney(totalResult)}</Title>
+        <Summary>
+          <SubTitle>Total</SubTitle>
+          <Value>{formatMoney(totalResult)}</Value>
+        </Summary>
+        <CheckoutContent>
+          <ButtonCheckout onPress={() => {}}>
+            <Title>Checkout</Title>
+          </ButtonCheckout>
+        </CheckoutContent>
       </Footer>
     </Container>
   );
