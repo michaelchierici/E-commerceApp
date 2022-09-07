@@ -14,7 +14,7 @@ export const Loading = () => {
     <Container>
       <Lottie
         ref={animationRef}
-        source={require('../../assets/pokeball-loading.json')}
+        source={require('../../assets/shoes_loading.json')}
       />
     </Container>
   );

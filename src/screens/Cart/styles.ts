@@ -21,9 +21,7 @@ export const Header = styled.View`
   margin-left: auto;
 `;
 
-export const Photo = styled.Image`
-  margin-left: auto;
-`;
+export const Photo = styled.Image``;
 
 export const Title = styled.Text`
   color: #fff;

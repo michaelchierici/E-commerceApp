@@ -1,35 +1,27 @@
 import React from 'react';
-import MewIcon from '../assets/mewIcon.svg';
-import PikachuIcon from '../assets/pikachuIcon.svg';
-import JigglypuffIcon from '../assets/jigglypuffIcon.svg';
-import BulbasaurIcon from '../assets/bulbasaurIcon.svg';
-import SquirtleIcon from '../assets/squirtleIcon.svg';
+import {IconButton} from 'react-native-paper';
 
-interface IconTypes {
+interface IconProps {
   type: string;
+  size: number;
+  color: string;
 }
 
-export function RenderIcon({type}: IconTypes) {
+export function RenderIcon({type, size, color}: IconProps) {
   switch (type) {
-    case 'Grass': {
-      return <BulbasaurIcon width={55} height={55} />;
+    case 'Heart': {
+      return <IconButton icon="heart-outline" size={size} color={color} />;
     }
-    case 'Psychic': {
-      return <MewIcon width={55} height={55} />;
-    }
-
-    case 'Water': {
-      return <SquirtleIcon width={55} height={55} />;
+    case 'Cart': {
+      return <IconButton icon="cart" size={size} />;
     }
 
-    case 'Eletric': {
-      return <PikachuIcon width={55} height={55} />;
+    case 'Arrow': {
+      return <IconButton icon="arrow-right" size={size} color={color} />;
     }
-    case 'Fairy': {
-      return <JigglypuffIcon width={55} height={55} />;
-    }
+
     default: {
-      return <PikachuIcon width={55} height={55} />;
+      return <IconButton icon="cart" size={size} />;
     }
   }
 }

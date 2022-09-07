@@ -7,8 +7,8 @@ import {useNavigation} from '@react-navigation/native';
 import {addToCart} from '../../store/actions';
 import {useDispatch} from 'react-redux';
 
-import {IconButton} from 'react-native-paper';
 import {ButtonContent, ButtonTrackScroll, Slide} from './styles';
+import {RenderIcon} from '../../util/renderIcon';
 
 interface Item {
   item?: any;
@@ -23,10 +23,10 @@ const Slider = ({item}: Item) => {
       <ComponentSlide
         containerStyle={{
           flexGrow: 1,
-          backgroundColor: '#393e46',
-          width: '100%',
+          backgroundColor: 'transparent',
+          width: '90%',
         }}
-        minimumValue={0.8}
+        minimumValue={1}
         maximumValue={10}
         trackClickable={false}
         onSlidingComplete={() => {
@@ -34,24 +34,23 @@ const Slider = ({item}: Item) => {
           navigation.navigate('Cart' as any);
         }}
         trackStyle={{
-          height: 70,
+          height: '100%',
         }}
-        maximumTrackTintColor="#000"
-        minimumTrackTintColor="#000"
+        maximumTrackTintColor="transparent"
+        minimumTrackTintColor="transparent"
         animateTransitions
         renderThumbComponent={() => (
-          <ButtonContent>
-            <IconButton
-              onPress={() => {
-                dispatch(addToCart(item));
-              }}
-              icon="cart-plus"
-              size={40}
-            />
+          <ButtonContent
+            onPress={() => {
+              dispatch(addToCart(item));
+            }}>
+            <RenderIcon type="Cart" size={40} color="#000" />
           </ButtonContent>
         )}
       />
+
       <ButtonTrackScroll />
+      <RenderIcon type="Arrow" size={40} color="#1e1e" />
     </Slide>
   );
 };

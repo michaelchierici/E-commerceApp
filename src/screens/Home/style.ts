@@ -10,14 +10,14 @@ export const Container = styled.View`
 
 export const Content = styled.View`
   width: 300px;
-  height: 390px;
+  height: 285px;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   border-radius: 15px;
   border: 1px solid #32e0c4;
   elevation: 5;
-  margin: 15px 0;
-  overflow: hidden;
+  padding: 20px;
+  margin: 15px;
 `;
 
 export const Header = styled.View`
@@ -27,9 +27,7 @@ export const Header = styled.View`
   height: 70%;
 `;
 
-export const Photo = styled.Image.attrs({
-  style: {width: 250, height: 250, borderRadius: 10},
-})``;
+export const Photo = styled.Image``;
 
 export const Footer = styled.View`
   height: 15%;
@@ -41,6 +39,8 @@ export const Footer = styled.View`
 
 export const Button = styled.TouchableOpacity``;
 
-export const Title = styled.Text``;
-
-export const Logo = styled.Text``;
+export const Title = styled.Text`
+  color: white;
+  font-size: 18px;
+  font-weight: bold 600;
+`;

@@ -11,7 +11,7 @@ import {
   SubTitle,
 } from './styles';
 
-import Logo from '../../assets/pokeballLogin.svg';
+import Logo from '../../assets/logo.svg';
 
 import {loginSchema} from '../../util/loginSchema';
 import {useFormik} from 'formik';

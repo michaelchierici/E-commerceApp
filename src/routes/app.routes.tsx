@@ -13,7 +13,6 @@ const {Navigator, Screen} = createBottomTabNavigator();
 const AppRoutes = () => {
   const theme = useTheme();
   const {loading} = useAuth();
-  console.log(loading);
 
   return (
     <Navigator

@@ -1,7 +1,5 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Button, Cards, Container, Content, Header, Title} from './styles';
-import Pokeballs from '../../assets/pokeballs.svg';
 import {FlatList, StatusBar} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
@@ -28,13 +26,7 @@ const Favorite = () => {
         translucent
         backgroundColor="transparent"
       />
-      <Header>
-        <Pokeballs
-          width={83}
-          height={83}
-          style={{marginLeft: 5, position: 'relative', zIndex: 10}}
-        />
-      </Header>
+      <Header />
       <Content>
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -52,7 +44,7 @@ const Favorite = () => {
                     ),
                   )
                 }>
-                <RenderIcon type={item.type} />
+                <RenderIcon type="Heart" size={30} color="white" />
               </Button>
             </Cards>
           )}

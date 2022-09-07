@@ -73,13 +73,18 @@ const Home = () => {
                     source={{
                       uri: item?.img,
                     }}
-                    style={{width: 250, height: 250, borderRadius: 10}}
+                    style={{
+                      width: '100%',
+                      height: 250,
+                      borderRadius: 10,
+                    }}
                   />
                 </Header>
                 <Footer>
                   <Title>{item?.name}</Title>
+
                   <Button onPress={() => dispatch(addToFav(item))}>
-                    <RenderIcon type={item.type} />
+                    <RenderIcon type="Heart" size={30} color="white" />
                   </Button>
                 </Footer>
                 <Slider item={item} />
