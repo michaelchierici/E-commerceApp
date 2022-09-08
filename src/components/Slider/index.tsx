@@ -37,7 +37,7 @@ const Slider = ({item}: Item) => {
           height: '100%',
         }}
         maximumTrackTintColor="transparent"
-        minimumTrackTintColor="transparent"
+        minimumTrackTintColor="#fca311"
         animateTransitions
         renderThumbComponent={() => (
           <ButtonContent

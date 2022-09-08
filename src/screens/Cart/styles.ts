@@ -4,7 +4,7 @@ export const Container = styled.View`
   width: 100%;
   align-items: center;
   justify-content: center;
-  background-color: #393e46;
+  background-color: ${({theme}) => theme.colors.background_primary};
   flex: 1;
 `;
 
@@ -24,7 +24,7 @@ export const Header = styled.View`
 export const Photo = styled.Image``;
 
 export const Title = styled.Text`
-  color: #fff;
+  color: ${({theme}) => theme.colors.shape};
   font-size: 20px;
   font-weight: bold;
   font-family: 'System';
@@ -41,7 +41,7 @@ export const Content = styled.View`
 `;
 
 export const Cards = styled.View`
-  background-color: #000;
+  background-color: ${({theme}) => theme.colors.background_secondary};
   border-radius: 20px;
   align-items: center;
   justify-content: space-between;
@@ -59,14 +59,14 @@ export const ContentButtons = styled.View`
   justify-content: space-around;
   flex-direction: row;
   margin: 0px 5px;
-  background-color: #fff;
+  background-color: ${({theme}) => theme.colors.shape};
   border-radius: 20px;
 `;
 
 export const Ammount = styled.Text`
-  color: #000;
   font-size: 16px;
-  font-weight: bold 500;
+  color: ${({theme}) => theme.colors.title};
+  font-weight: ${({theme}) => theme.fonts.weight.bold};
 `;
 
 export const Button = styled.TouchableOpacity`
@@ -75,7 +75,7 @@ export const Button = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   border-radius: 50px;
-  background-color: #fff;
+  background-color: ${({theme}) => theme.colors.shape};
 `;
 
 export const Footer = styled.View`
@@ -93,17 +93,17 @@ export const Summary = styled.View`
 `;
 
 export const SubTitle = styled.Text`
-  color: #fff;
+  color: ${({theme}) => theme.colors.title};
+  font-weight: ${({theme}) => theme.fonts.weight.bold};
   font-size: 16px;
-  font-weight: light 400;
   font-family: 'System';
   margin: 0 10px;
 `;
 
 export const Value = styled.Text`
-  color: #fff;
+  color: ${({theme}) => theme.colors.shape};
   font-size: 16px;
-  font-weight: light 400;
+  font-weight: ${({theme}) => theme.fonts.weight.bold};
   font-family: 'System';
   margin: 0 10px;
 `;
@@ -115,7 +115,8 @@ export const CheckoutContent = styled.View`
 `;
 
 export const ButtonCheckout = styled.TouchableOpacity`
-  background-color: #000;
+  background-color: ${({theme}) => theme.button.primary};
+
   width: 50%;
   height: 50px;
   border-radius: 15px;
@@ -126,7 +127,7 @@ export const ButtonCheckout = styled.TouchableOpacity`
 export const Divisor = styled.View`
   width: 100%;
   height: 1px;
-  background-color: #000;
+  background-color: ${({theme}) => theme.colors.background_secondary};
 `;
 
 export const TotalValue = styled.Text`

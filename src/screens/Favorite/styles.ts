@@ -4,7 +4,7 @@ export const Container = styled.View`
   width: 100%;
   align-items: center;
   justify-content: center;
-  background-color: #393e46;
+  background-color: ${({theme}) => theme.colors.background_primary};
   flex: 1;
 `;
 
@@ -15,7 +15,7 @@ export const Header = styled.View`
 `;
 
 export const Content = styled.View`
-  background-color: #393e46;
+  background-color: ${({theme}) => theme.colors.shape_light};
   justify-content: center;
   align-items: flex-start;
   flex-direction: row;
@@ -27,7 +27,7 @@ export const Content = styled.View`
 `;
 
 export const Cards = styled.View`
-  background-color: #000;
+  background-color: ${({theme}) => theme.colors.shape_dark};
   border-radius: 20px;
   align-items: center;
   justify-content: space-between;
@@ -39,9 +39,9 @@ export const Cards = styled.View`
 `;
 
 export const Title = styled.Text`
-  color: #fff;
+  color: ${({theme}) => theme.colors.text};
+  font-weight: ${({theme}) => theme.fonts.weight.bold};
   font-size: 20px;
-  font-weight: bold;
   font-family: 'System';
   margin-left: 10px;
 `;

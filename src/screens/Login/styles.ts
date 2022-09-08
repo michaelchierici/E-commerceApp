@@ -12,7 +12,7 @@ export const Container = styled.View`
   align-items: center;
   justify-content: center;
   width: 100%;
-  background-color: #000814;
+  background-color: ${({theme}) => theme.colors.background_primary};
 `;
 
 export const Header = styled.View`
@@ -28,14 +28,16 @@ export const Content = styled.View`
   width: 350px;
   border-radius: 15px;
   flex-direction: column;
-  background-color: #000814;
+  background-color: ${({theme}) => theme.colors.background_primary};
+  elevation: 16;
 `;
 
 export const Input = styled.TextInput.attrs({
   placeholderTextColor: '#c0c0c0',
 })<Props>`
   width: 80%;
-  background-color: #4f5d75;
+  background-color: ${({theme}) => theme.colors.shape_light};
+
   border-radius: 8px;
   font-size: 16px;
   height: 48px;
@@ -43,8 +45,9 @@ export const Input = styled.TextInput.attrs({
   font-family: 'System';
   font-size: 16px;
   font-weight: bold;
-  border: 2px solid #1d3557;
+  border: 0.8px solid #29292e;
   margin: 10px 0;
+  color: ${({theme}) => theme.colors.text_detail};
 `;
 
 export const Footer = styled.View`
@@ -57,7 +60,7 @@ export const Button = styled.TouchableOpacity`
   width: 60%;
   font-size: 16px;
   height: 50px;
-  background-color: #06d6a0;
+  background-color: ${({theme}) => theme.colors.background_secondary};
   border-radius: 10px;
   align-items: center;
   justify-content: center;
@@ -67,8 +70,8 @@ export const Button = styled.TouchableOpacity`
 export const Title = styled.Text<Props>`
   font-family: 'System';
   font-size: 16px;
-  font-weight: bold;
-  color: ${({type}) => (type === 'newUser' ? '#06d6a0' : 'black')};
+  font-weight: ${({theme}) => theme.fonts.weight.bold};
+  color: ${({type}) => (type === 'newUser' ? '#E5E5E5' : 'black')};
 `;
 
 export const ArrowButton = styled.TouchableOpacity`
@@ -85,7 +88,7 @@ export const ArrowButton = styled.TouchableOpacity`
 export const SubTitle = styled.Text<Props>`
   font-family: 'System';
   font-size: 18px;
-  font-weight: bold;
+  font-weight: ${({theme}) => theme.fonts.weight.bold};
   text-decoration: underline;
-  color: ${({type}) => (type === 'newUser' ? '#06d6a0' : 'black')};
+  color: ${({type}) => (type === 'newUser' ? '#E5E5E5' : 'black')};
 `;

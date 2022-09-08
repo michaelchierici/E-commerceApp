@@ -6,10 +6,11 @@ import {useSelector} from 'react-redux';
 import {StoreType} from '../../store';
 import {removeFromFav} from '../../store/actions';
 import {RenderIcon} from '../../util/renderIcon';
+import {useTheme} from 'styled-components';
 
 const Favorite = () => {
   const dispatch = useDispatch();
-
+  const theme = useTheme();
   const {favItem}: any = useSelector(
     (state: StoreType) => state.favoriteReducer,
   );
@@ -44,7 +45,7 @@ const Favorite = () => {
                     ),
                   )
                 }>
-                <RenderIcon type="Heart" size={30} color="white" />
+                <RenderIcon type="Heart" size={30} color={theme.colors.shape} />
               </Button>
             </Cards>
           )}

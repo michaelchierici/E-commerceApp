@@ -22,9 +22,11 @@ import Slider from '../../components/Slider';
 import {RenderIcon} from '../../util/renderIcon';
 import LogOff from '../../components/Logout';
 import {Loading} from '../../components/Loading';
+import {useTheme} from 'styled-components';
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
+  const theme = useTheme();
 
   const {setItemInProductsList}: any = useSelector(
     (state: StoreType) => state.productsReducer,
@@ -82,9 +84,12 @@ const Home = () => {
                 </Header>
                 <Footer>
                   <Title>{item?.name}</Title>
-
                   <Button onPress={() => dispatch(addToFav(item))}>
-                    <RenderIcon type="Heart" size={30} color="white" />
+                    <RenderIcon
+                      type="Heart"
+                      size={30}
+                      color={theme.colors.title}
+                    />
                   </Button>
                 </Footer>
                 <Slider item={item} />

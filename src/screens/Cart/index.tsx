@@ -26,6 +26,7 @@ import {
   Ammount,
   Top,
   CheckoutContent,
+  Divisor,
 } from './styles';
 
 const Cart = () => {
@@ -81,7 +82,7 @@ const Cart = () => {
                 }}
               />
               <Header>
-                <Title>{item.name}</Title>
+                <SubTitle>{item.name}</SubTitle>
                 <SubTitle>{formatMoney(item.price)}</SubTitle>
               </Header>
               <ContentButtons>
@@ -122,8 +123,9 @@ const Cart = () => {
         />
       </Content>
       <Footer>
+        <Divisor />
         <Summary>
-          <SubTitle>Total</SubTitle>
+          <Title>Total</Title>
           <Value>{formatMoney(totalResult)}</Value>
         </Summary>
         <CheckoutContent>

@@ -18,13 +18,13 @@ const AppRoutes = () => {
     <Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: theme.colors.main,
-        tabBarInactiveTintColor: theme.colors.text,
+        tabBarActiveTintColor: theme.colors.background_secondary,
+        tabBarInactiveTintColor: theme.colors.shape,
         tabBarShowLabel: false,
         tabBarStyle: {
           height: 60,
           paddingVertical: Platform.OS === 'ios' ? 20 : 0,
-          backgroundColor: theme.colors.shape_dark,
+          backgroundColor: theme.colors.background_primary,
           width: '100%',
           display: loading ? 'none' : 'flex',
         },

@@ -5,7 +5,7 @@ export const Slide = styled.View.attrs({})`
   height: 15%;
   flex-direction: row;
   align-items: center;
-  background-color: #393e46;
+  background-color: ${({theme}) => theme.colors.background_primary};
   border-radius: 15px;
 `;
 
@@ -24,14 +24,8 @@ export const ButtonContent = styled.TouchableOpacity`
   justify-content: center;
   height: 40px;
   border-radius: 10px;
-  background-color: #32e0c4;
+  background-color: ${({theme}) => theme.colors.shape};
   position: relative;
   margin: 0px 10px;
   width: 60%;
-`;
-
-export const Title = styled.Text`
-  font-size: 16px;
-  font-weight: bold 600;
-  color: #fff;
 `;

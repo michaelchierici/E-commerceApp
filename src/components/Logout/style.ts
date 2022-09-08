@@ -4,7 +4,8 @@ export const Container = styled.View`
   align-items: center;
   justify-content: space-between;
   flex-direction: row-reverse;
-  background-color: #000;
+  background-color: ${({theme}) => theme.colors.background_primary};
+
   height: 10px;
   margin-top: 50px;
   right: 0;

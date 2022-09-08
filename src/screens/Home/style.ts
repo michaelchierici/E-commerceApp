@@ -4,7 +4,7 @@ export const Container = styled.View`
   width: 100%;
   align-items: center;
   justify-content: flex-start;
-  background-color: #000;
+  background-color: ${({theme}) => theme.colors.background_primary};
   padding-top: 60px;
 `;
 
@@ -14,10 +14,10 @@ export const Content = styled.View`
   align-items: center;
   justify-content: center;
   border-radius: 15px;
-  border: 1px solid #32e0c4;
   elevation: 5;
   padding: 20px;
   margin: 15px;
+  background-color: ${({theme}) => theme.colors.background_secondary};
 `;
 
 export const Header = styled.View`
@@ -25,6 +25,7 @@ export const Header = styled.View`
   align-items: center;
   justify-content: center;
   height: 70%;
+  border-radius: 15px;
 `;
 
 export const Photo = styled.Image``;
@@ -40,7 +41,8 @@ export const Footer = styled.View`
 export const Button = styled.TouchableOpacity``;
 
 export const Title = styled.Text`
-  color: white;
+  color: ${({theme}) => theme.colors.title};
   font-size: 18px;
-  font-weight: bold 600;
+  font-weight: ${({theme}) => theme.fonts.weight.bold};
+  margin: 0 auto;
 `;

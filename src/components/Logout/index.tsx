@@ -2,12 +2,12 @@ import React from 'react';
 import {StatusBar} from 'react-native';
 import {IconButton} from 'react-native-paper';
 import {useAuth} from '../../hooks/useAuth';
-
+import {useTheme} from 'styled-components';
 import {Container, Header} from './style';
 
 const LogOff = () => {
   const {signOut} = useAuth();
-
+  const theme = useTheme();
   return (
     <Container>
       <StatusBar
@@ -16,7 +16,7 @@ const LogOff = () => {
         backgroundColor="transparent"
       />
       <Header onPress={() => signOut()}>
-        <IconButton icon="logout" color="#06d6a0" size={40} />
+        <IconButton icon="logout" color={theme.colors.shape} size={40} />
       </Header>
     </Container>
   );
