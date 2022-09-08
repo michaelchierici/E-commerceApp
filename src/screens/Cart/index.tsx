@@ -78,7 +78,6 @@ const Cart = () => {
                   width: 80,
                   height: 80,
                   borderRadius: 10,
-                  marginRight: 'auto',
                 }}
               />
               <Header>

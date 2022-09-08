@@ -18,7 +18,7 @@ export const Top = styled.View`
 export const Header = styled.View`
   align-items: center;
   justify-content: center;
-  margin-left: auto;
+  margin: 0 auto;
 `;
 
 export const Photo = styled.Image``;
@@ -46,7 +46,7 @@ export const Cards = styled.View`
   align-items: center;
   justify-content: space-between;
   height: 90px;
-  width: 300px;
+  width: 100%;
   elevation: 8;
   flex-direction: row;
   margin: 5px 0px;
@@ -92,12 +92,16 @@ export const Summary = styled.View`
   margin: 5px 0px;
 `;
 
+export const TextCopntent = styled.View`
+  background-color: red;
+  margin: 0 auto;
+`;
+
 export const SubTitle = styled.Text`
   color: ${({theme}) => theme.colors.title};
   font-weight: ${({theme}) => theme.fonts.weight.bold};
   font-size: 16px;
   font-family: 'System';
-  margin: 0 10px;
 `;
 
 export const Value = styled.Text`
@@ -105,7 +109,6 @@ export const Value = styled.Text`
   font-size: 16px;
   font-weight: ${({theme}) => theme.fonts.weight.bold};
   font-family: 'System';
-  margin: 0 10px;
 `;
 
 export const CheckoutContent = styled.View`
