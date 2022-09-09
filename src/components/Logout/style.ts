@@ -6,9 +6,9 @@ export const Container = styled.View`
   flex-direction: row-reverse;
   background-color: ${({theme}) => theme.colors.background_primary};
 
-  height: 10px;
+  height: 40px;
   margin-top: 50px;
-  right: 0;
+  right: -2%;
   position: absolute;
 `;
 

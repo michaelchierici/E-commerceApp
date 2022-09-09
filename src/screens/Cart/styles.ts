@@ -47,7 +47,6 @@ export const Cards = styled.View`
   justify-content: space-between;
   height: 90px;
   width: 100%;
-  elevation: 8;
   flex-direction: row;
   margin: 5px 0px;
 `;
@@ -109,6 +108,7 @@ export const Value = styled.Text`
   font-size: 16px;
   font-weight: ${({theme}) => theme.fonts.weight.bold};
   font-family: 'System';
+  margin-right: 10px;
 `;
 
 export const CheckoutContent = styled.View`
@@ -134,7 +134,8 @@ export const Divisor = styled.View`
 `;
 
 export const TotalValue = styled.Text`
-  color: #fff;
+  color: ${({theme}) => theme.colors.shape};
+
   font-weight: bold 500;
   font-size: 18px;
   font-family: 'System';

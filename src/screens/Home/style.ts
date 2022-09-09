@@ -5,17 +5,16 @@ export const Container = styled.View`
   align-items: center;
   justify-content: flex-start;
   background-color: ${({theme}) => theme.colors.background_primary};
-  padding-top: 60px;
+  padding-top: 100px;
 `;
 
 export const Content = styled.View`
   width: 300px;
-  height: 285px;
+  height: 275px;
   align-items: center;
   justify-content: center;
   border-radius: 15px;
-  elevation: 5;
-  padding: 20px;
+  padding: 25px;
   margin: 15px;
   background-color: ${({theme}) => theme.colors.background_secondary};
 `;
@@ -25,7 +24,6 @@ export const Header = styled.View`
   align-items: center;
   justify-content: center;
   height: 70%;
-  border-radius: 15px;
 `;
 
 export const Photo = styled.Image``;

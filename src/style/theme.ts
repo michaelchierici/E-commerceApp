@@ -17,6 +17,9 @@ export default {
     secondary: '#FCA311',
     shape: '#E5E5E5',
   },
+  shadow: {
+    light: '0px 15px 10px rgba(600, 60, 60, 0.5)',
+  },
   fonts: {
     primary_400: 'Inter_400Regular',
     primary_500: 'Inter_500Medium',
