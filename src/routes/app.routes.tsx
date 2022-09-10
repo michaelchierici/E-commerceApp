@@ -7,6 +7,7 @@ import {Platform} from 'react-native';
 import {useTheme} from 'styled-components/native';
 import {IconButton} from 'react-native-paper';
 import {useAuth} from '../hooks/useAuth';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
@@ -33,9 +34,7 @@ const AppRoutes = () => {
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: ({color}) => (
-            <IconButton icon="home" size={30} color={color} />
-          ),
+          tabBarIcon: ({color}) => <Icon name="home" size={30} color={color} />,
         }}
       />
       <Screen

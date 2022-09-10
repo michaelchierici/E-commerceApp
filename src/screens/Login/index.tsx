@@ -9,9 +9,9 @@ import {
   Footer,
   Input,
   SubTitle,
+  Logo,
+  Text,
 } from './styles';
-
-import Logo from '../../assets/logo.svg';
 
 import {loginSchema} from '../../util/loginSchema';
 import {useFormik} from 'formik';
@@ -50,7 +50,8 @@ export const SignIn = () => {
       />
       <Content>
         <Header>
-          <Logo width={100} height={100} />
+          <Title>Bem Vindo,{'\n'} faça seu login!</Title>
+          <Logo />
         </Header>
         <Input
           placeholder="Username"
@@ -68,7 +69,7 @@ export const SignIn = () => {
         />
         <Footer>
           <Button onPress={() => handleSubmit()}>
-            <Title type="oldUser">Entrar</Title>
+            <Text type="oldUser">Entrar</Text>
           </Button>
 
           {!isNewAccount && (
@@ -83,7 +84,7 @@ export const SignIn = () => {
                 handleSubmit();
                 setIsNewAccount(false);
               }}>
-              <Title type="newUser">Crie sua Conta</Title>
+              <SubTitle type="newUser">Crie sua Conta</SubTitle>
             </SubTitle>
           )}
         </Footer>

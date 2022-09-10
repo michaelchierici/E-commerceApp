@@ -44,13 +44,13 @@ const Slider = ({item}: Item) => {
             onPress={() => {
               dispatch(addToCart(item));
             }}>
-            <RenderIcon type="Cart" size={40} color="#000" />
+            <RenderIcon type="cart-right" size={40} color="#000" />
           </ButtonContent>
         )}
       />
 
       <ButtonTrackScroll />
-      <RenderIcon type="Arrow" size={40} color="#1e1e" />
+      <RenderIcon type="arrow" size={40} color="#1e1e" />
     </Slide>
   );
 };

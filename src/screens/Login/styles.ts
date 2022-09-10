@@ -1,9 +1,6 @@
-import React from 'react';
-
 import styled from 'styled-components/native';
 
 export interface Props {
-  leftIcon?: React.ReactNode;
   type?: 'newUser' | 'oldUser';
 }
 
@@ -13,6 +10,15 @@ export const Container = styled.View`
   justify-content: center;
   width: 100%;
   background-color: ${({theme}) => theme.colors.background_primary};
+`;
+
+export const Logo = styled.Image.attrs({
+  source: {
+    uri: 'https://o.remove.bg/downloads/37ba4467-14ae-4cd5-b579-ba17f517ebe3/360_F_460996349_bIzl423o41oLdi5hJIgNT3OD8SViuo9i-removebg-preview.png',
+  },
+})`
+  width: 100px;
+  height: 100px;
 `;
 
 export const Header = styled.View`
@@ -42,9 +48,8 @@ export const Input = styled.TextInput.attrs({
   font-size: 16px;
   height: 48px;
   padding-left: 15px;
-  font-family: 'System';
+  font-family: ${({theme}) => theme.fonts.regular};
   font-size: 16px;
-  font-weight: bold;
   border: 0.8px solid #29292e;
   margin: 10px 0;
   color: ${({theme}) => theme.colors.text_detail};
@@ -68,9 +73,16 @@ export const Button = styled.TouchableOpacity`
 `;
 
 export const Title = styled.Text<Props>`
-  font-family: 'System';
+  font-family: ${({theme}) => theme.fonts.semi_bold};
+  font-size: 20px;
+  color: ${({theme}) => theme.colors.shape};
+
+  text-align: center;
+`;
+
+export const Text = styled.Text<Props>`
+  font-family: ${({theme}) => theme.fonts.semi_bold};
   font-size: 16px;
-  font-weight: ${({theme}) => theme.fonts.weight.bold};
   color: ${({type}) => (type === 'newUser' ? '#E5E5E5' : 'black')};
 `;
 
@@ -86,9 +98,9 @@ export const ArrowButton = styled.TouchableOpacity`
 `;
 
 export const SubTitle = styled.Text<Props>`
-  font-family: 'System';
+  font-family: ${({theme}) => theme.fonts.light};
+
   font-size: 18px;
-  font-weight: ${({theme}) => theme.fonts.weight.bold};
   text-decoration: underline;
   color: ${({type}) => (type === 'newUser' ? '#E5E5E5' : 'black')};
 `;

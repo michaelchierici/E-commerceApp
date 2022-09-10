@@ -5,8 +5,8 @@ import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
 import {StoreType} from '../../store';
 import {removeFromFav} from '../../store/actions';
-import {RenderIcon} from '../../util/renderIcon';
 import {useTheme} from 'styled-components';
+import {RenderIcon} from '../../util/renderIcon';
 
 const Favorite = () => {
   const dispatch = useDispatch();
@@ -36,16 +36,21 @@ const Favorite = () => {
           renderItem={({item}) => (
             <Cards>
               <Title>{item.name}</Title>
-
-              <Button
-                onPress={() =>
-                  dispatch(
-                    removeFromFav(
-                      favItem.filter((delItem: any) => item.id !== delItem.id),
-                    ),
-                  )
-                }>
-                <RenderIcon type="Heart" size={30} color={theme.colors.shape} />
+              <Button>
+                <RenderIcon
+                  type="heart-minus"
+                  color={theme.colors.shape}
+                  size={30}
+                  onPress={() =>
+                    dispatch(
+                      removeFromFav(
+                        favItem.filter(
+                          (delItem: any) => item.id !== delItem.id,
+                        ),
+                      ),
+                    )
+                  }
+                />
               </Button>
             </Cards>
           )}

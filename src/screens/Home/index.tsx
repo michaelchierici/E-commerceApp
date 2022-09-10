@@ -6,7 +6,7 @@ import {FlatList} from 'react-native';
 
 import {useAuth} from '../../hooks/useAuth';
 import {api} from '../../services/api';
-import {addToFav, setItemsLists} from '../../store/actions';
+import {addToCart, addToFav, setItemsLists} from '../../store/actions';
 import {
   Button,
   Container,
@@ -15,6 +15,7 @@ import {
   Header,
   Photo,
   Title,
+  Value,
 } from './style';
 import {useSelector} from 'react-redux';
 import {StoreType} from '../../store';
@@ -23,6 +24,7 @@ import {RenderIcon} from '../../util/renderIcon';
 import LogOff from '../../components/Logout';
 import {Loading} from '../../components/Loading';
 import {useTheme} from 'styled-components';
+import {formatMoney} from '../../util/formatMoney';
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -71,6 +73,24 @@ const Home = () => {
             renderItem={({item}) => (
               <Content>
                 <Header>
+                  <Button>
+                    <RenderIcon
+                      type="heart"
+                      size={30}
+                      color={theme.colors.title}
+                      onPress={() => {
+                        dispatch(addToFav(item));
+                      }}
+                    />
+                    <RenderIcon
+                      type="cart"
+                      size={30}
+                      color={theme.colors.title}
+                      onPress={() => {
+                        dispatch(addToCart(item));
+                      }}
+                    />
+                  </Button>
                   <Photo
                     source={{
                       uri: item?.img,
@@ -84,13 +104,7 @@ const Home = () => {
                 </Header>
                 <Footer>
                   <Title>{item?.name}</Title>
-                  <Button onPress={() => dispatch(addToFav(item))}>
-                    <RenderIcon
-                      type="Heart"
-                      size={30}
-                      color={theme.colors.title}
-                    />
-                  </Button>
+                  <Value>{formatMoney(item?.price)}</Value>
                 </Footer>
                 <Slider item={item} />
               </Content>

@@ -1,12 +1,13 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {StatusBar} from 'react-native';
-import {IconButton} from 'react-native-paper';
 import {useAuth} from '../../hooks/useAuth';
 import {useTheme} from 'styled-components';
-import {Container, Header} from './style';
+import {Container, Header, Title} from './style';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 const LogOff = () => {
-  const {signOut} = useAuth();
+  const {signOut, user} = useAuth();
   const theme = useTheme();
   return (
     <Container>
@@ -16,7 +17,15 @@ const LogOff = () => {
         backgroundColor="transparent"
       />
       <Header onPress={() => signOut()}>
-        <IconButton icon="logout" color={theme.colors.shape} size={40} />
+        <Title>
+          Olá, {'\n'} {user.name}
+        </Title>
+        <Icon
+          style={{position: 'absolute', right: '5%'}}
+          name="logout"
+          color={theme.colors.shape}
+          size={30}
+        />
       </Header>
     </Container>
   );

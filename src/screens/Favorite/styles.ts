@@ -40,14 +40,14 @@ export const Cards = styled.View`
 
 export const Title = styled.Text`
   color: ${({theme}) => theme.colors.text};
-  font-weight: ${({theme}) => theme.fonts.weight.bold};
-  font-size: 20px;
-  font-family: 'System';
+  font-size: 18px;
+  font-family: ${({theme}) => theme.fonts.semi_bold};
   margin-left: 10px;
 `;
 
 export const Button = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
-  border-radius: 50px;
+  border-radius: 10px;
+  margin-right: 10px;
 `;

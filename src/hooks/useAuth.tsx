@@ -29,7 +29,7 @@ export function AuthProvider({children}: AuthProps) {
   const [user, setUser] = useState<User>({} as User);
   const [loading, setLoading] = useState(false);
 
-  const userStorageKey = '@pokedex/user';
+  const userStorageKey = '@storage/user';
 
   async function login(name: any, password: any) {
     if (!name && !password) {

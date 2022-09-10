@@ -24,10 +24,9 @@ export const Header = styled.View`
 export const Photo = styled.Image``;
 
 export const Title = styled.Text`
+  font-family: ${({theme}) => theme.fonts.semi_bold};
   color: ${({theme}) => theme.colors.shape};
   font-size: 20px;
-  font-weight: bold;
-  font-family: 'System';
   margin: 0 10px;
 `;
 
@@ -65,7 +64,7 @@ export const ContentButtons = styled.View`
 export const Ammount = styled.Text`
   font-size: 16px;
   color: ${({theme}) => theme.colors.title};
-  font-weight: ${({theme}) => theme.fonts.weight.bold};
+  font-family: ${({theme}) => theme.fonts.semi_bold};
 `;
 
 export const Button = styled.TouchableOpacity`
@@ -98,16 +97,15 @@ export const TextCopntent = styled.View`
 
 export const SubTitle = styled.Text`
   color: ${({theme}) => theme.colors.title};
-  font-weight: ${({theme}) => theme.fonts.weight.bold};
   font-size: 16px;
-  font-family: 'System';
+  font-family: ${({theme}) => theme.fonts.semi_bold};
 `;
 
 export const Value = styled.Text`
   color: ${({theme}) => theme.colors.shape};
   font-size: 16px;
-  font-weight: ${({theme}) => theme.fonts.weight.bold};
-  font-family: 'System';
+  font-family: ${({theme}) => theme.fonts.medium};
+
   margin-right: 10px;
 `;
 
@@ -135,8 +133,6 @@ export const Divisor = styled.View`
 
 export const TotalValue = styled.Text`
   color: ${({theme}) => theme.colors.shape};
-
-  font-weight: bold 500;
+  font-family: ${({theme}) => theme.fonts.semi_bold};
   font-size: 18px;
-  font-family: 'System';
 `;
