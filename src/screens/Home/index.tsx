@@ -44,10 +44,9 @@ const Home = () => {
     setLoading(true);
     async function fetchProducts() {
       try {
-        const response = await api.get('/api/pokemons', {
+        const response = await api.get('/api/products', {
           headers: {authorization: 'Bearer ' + user.token},
         });
-
         dispatch(setItemsLists(await response.data));
       } catch (error) {
         console.log(error);

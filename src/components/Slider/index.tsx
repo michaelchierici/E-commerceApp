@@ -3,6 +3,7 @@ import React from 'react';
 
 import {Slider as ComponentSlide} from '@miblanchard/react-native-slider';
 import {useNavigation} from '@react-navigation/native';
+import {useTheme} from 'styled-components';
 
 import {addToCart} from '../../store/actions';
 import {useDispatch} from 'react-redux';
@@ -17,6 +18,7 @@ interface Item {
 const Slider = ({item}: Item) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
+  const theme = useTheme();
 
   return (
     <Slide>
@@ -37,7 +39,7 @@ const Slider = ({item}: Item) => {
           height: '100%',
         }}
         maximumTrackTintColor="transparent"
-        minimumTrackTintColor="#fca311"
+        minimumTrackTintColor={theme.colors.background_secondary}
         animateTransitions
         renderThumbComponent={() => (
           <ButtonContent

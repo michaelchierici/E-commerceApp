@@ -1,16 +1,16 @@
 export default {
   colors: {
-    background_primary: '#14213D',
-    background_secondary: '#FCA311',
+    background_primary: '#223971',
+    background_secondary: '#FFC906',
 
-    title: '#000000',
+    title: '#121F45',
     title_secondary: '#FFFF',
-    text: '#FCA311',
+    text: '#FFC906',
     text_detail: '#E5E5E5',
 
     shape: '#E5E5E5',
     shape_dark: '#000000',
-    shape_light: '#29292E',
+    shape_light: '#464646',
   },
   button: {
     primary: '#000000',
@@ -23,15 +23,5 @@ export default {
     medium: 'Inter_Medium',
     regular: 'Inter-Regular',
     semi_bold: 'Inter-SemiBold',
-    weight: {
-      light: 'light 300',
-      medium: 'medium 400',
-      regular: 'regular 500',
-      bold: 'bold 600',
-    },
-  },
-  icon: {
-    primary: '#000000',
-    secondary: '#E5E5E5',
   },
 };

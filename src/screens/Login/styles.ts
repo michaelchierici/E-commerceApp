@@ -36,6 +36,7 @@ export const Content = styled.View`
   flex-direction: column;
   background-color: ${({theme}) => theme.colors.background_primary};
   elevation: 16;
+  box-shadow: 15px 15px 15px rgb(255, 101, 0);
 `;
 
 export const Input = styled.TextInput.attrs({
@@ -74,9 +75,8 @@ export const Button = styled.TouchableOpacity`
 
 export const Title = styled.Text<Props>`
   font-family: ${({theme}) => theme.fonts.semi_bold};
-  font-size: 20px;
+  font-size: 26px;
   color: ${({theme}) => theme.colors.shape};
-
   text-align: center;
 `;
 

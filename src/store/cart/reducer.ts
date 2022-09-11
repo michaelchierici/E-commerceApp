@@ -7,9 +7,8 @@ import {
 
 export interface CART_ITEM_REDUCER_INITIAL_STATE_PROPS {
   itemAddedInCart: any[];
-
   name: string;
-  price: number;
+  price: any[];
   ammount: number;
   items: any[];
   total: number;
@@ -17,18 +16,17 @@ export interface CART_ITEM_REDUCER_INITIAL_STATE_PROPS {
 
 export const CART_REDUCER_INITIAL_STATE = {
   itemAddedInCart: [],
-
   name: '',
-  price: 0,
+  price: [],
   ammount: 0,
-  items: [],
-  total: 0,
+  total: [],
 };
 
 const cartReducer = (state = CART_REDUCER_INITIAL_STATE, action: any) => {
   switch (action.type) {
     case ADD_TO_CART: {
       const itemAddedInCart = action.item;
+
       return {
         ...state,
         itemAddedInCart: [...state.itemAddedInCart, itemAddedInCart],

@@ -7,7 +7,6 @@ export const Slide = styled.View.attrs({})`
   align-items: center;
   background-color: ${({theme}) => theme.colors.background_primary};
   border-radius: 15px;
-  elevation: 10;
 `;
 
 export const ButtonTrackScroll = styled.ScrollView.attrs({

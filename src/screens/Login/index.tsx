@@ -16,12 +16,12 @@ import {
 import {loginSchema} from '../../util/loginSchema';
 import {useFormik} from 'formik';
 
-import {IconButton} from 'react-native-paper';
+import Icon from 'react-native-vector-icons/AntDesign';
 import {useAuth} from '../../hooks/useAuth';
 import {StatusBar} from 'react-native';
 
 export const SignIn = () => {
-  const [isNewAccount, setIsNewAccount] = useState(true);
+  const [isNewAccount, setIsNewAccount] = useState(false);
 
   const {login} = useAuth();
 
@@ -29,7 +29,7 @@ export const SignIn = () => {
     if (!user && !password) {
       return;
     }
-    await login(user, password);
+    await login(user, password, isNewAccount ? 'trainer' : 'login');
   };
 
   const {values, handleChange, handleBlur, handleSubmit} = useFormik({
@@ -40,7 +40,6 @@ export const SignIn = () => {
     onSubmit: handleValidSubmit,
     validationSchema: loginSchema,
   });
-
   return (
     <Container>
       <StatusBar
@@ -50,11 +49,11 @@ export const SignIn = () => {
       />
       <Content>
         <Header>
-          <Title>Bem Vindo,{'\n'} faça seu login!</Title>
+          <Title>Login</Title>
           <Logo />
         </Header>
         <Input
-          placeholder="Username"
+          placeholder="Usuário"
           value={values?.user}
           onChangeText={handleChange('user')}
           onBlur={handleBlur('user')}
@@ -69,20 +68,20 @@ export const SignIn = () => {
         />
         <Footer>
           <Button onPress={() => handleSubmit()}>
-            <Text type="oldUser">Entrar</Text>
+            <Text type="oldUser">{!isNewAccount ? 'Entrar' : 'Confirmar'}</Text>
           </Button>
 
-          {!isNewAccount && (
-            <ArrowButton onPress={() => setIsNewAccount(true)}>
-              <IconButton icon="arrow-left-thin" color="#fff" />
+          {isNewAccount && (
+            <ArrowButton onPress={() => setIsNewAccount(false)}>
+              <Icon name="arrowleft" color="#fff" />
             </ArrowButton>
           )}
-          {isNewAccount && (
+          {!isNewAccount && (
             <SubTitle
               type="newUser"
               onPress={async () => {
                 handleSubmit();
-                setIsNewAccount(false);
+                setIsNewAccount(true);
               }}>
               <SubTitle type="newUser">Crie sua Conta</SubTitle>
             </SubTitle>

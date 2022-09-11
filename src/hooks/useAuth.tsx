@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {api} from '../services/api';
 import {showToast} from '../util/toasts';
 import {Token} from '../services/token';
+import {AxiosError} from 'axios';
 
 interface AuthProps {
   children: ReactNode;
@@ -20,7 +21,7 @@ interface AuthContextData {
   user: User;
   signOut(): Promise<void>;
   loading: boolean;
-  login(name: any, password: any): Promise<any>;
+  login(name: any, password: any, params: any): Promise<any>;
 }
 
 const AuthContext = createContext({} as AuthContextData);
@@ -31,15 +32,22 @@ export function AuthProvider({children}: AuthProps) {
 
   const userStorageKey = '@storage/user';
 
-  async function login(name: any, password: any) {
+  async function login(name: any, password: any, params: any) {
     if (!name && !password) {
       return;
     }
     try {
-      const response = await api.post('/api/login', name, password);
+      const response = await api.post(`/api/${params}`, name, password);
+
+      params === 'trainer'
+        ? showToast(
+            'conta criada com sucesso, pressione em voltar e faça login',
+            'info',
+          )
+        : null;
 
       const {data} = response;
-      Token.setToken(userStorageKey, data.token);
+      params === 'login' ? Token.setToken(userStorageKey, data.token) : null;
 
       const userLogged = {
         id: data.user.id,
@@ -47,9 +55,12 @@ export function AuthProvider({children}: AuthProps) {
         token: data.token,
       };
 
-      setUser(userLogged);
+      setUser(params === 'login' ? userLogged : ({} as any));
     } catch (error) {
-      showToast('usuário não cadastrado ou senha inválida!', 'error');
+      const err = error as AxiosError;
+      const {message} = err.response?.data as AxiosError;
+
+      showToast(message, 'error');
     }
   }
   async function signOut() {

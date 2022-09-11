@@ -45,14 +45,10 @@ const Cart = () => {
     filteredCartItems.length > 0
       ? filteredCartItems
           .map((item: any) => item.price)
-          .reduce((curr: any) => curr)
+          .reduce((acc: any, curr: any) => acc + curr)
       : null;
 
-  let valueOfTotalItemsinCart =
-    filteredCartItems.length * accumulatedPricesToCalc;
-
-  const [totalResult, setTotalResult] = useState<any>(valueOfTotalItemsinCart);
-
+  const [totalResult, setTotalResult] = useState<any>(0);
   return (
     <Container>
       <StatusBar
@@ -125,7 +121,7 @@ const Cart = () => {
         <Divisor />
         <Summary>
           <Title>Total</Title>
-          <Value>{formatMoney(totalResult)}</Value>
+          <Value>{formatMoney(accumulatedPricesToCalc + totalResult)}</Value>
         </Summary>
         <CheckoutContent>
           <ButtonCheckout onPress={() => {}}>

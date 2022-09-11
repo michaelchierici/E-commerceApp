@@ -73,7 +73,7 @@ export const Value = styled.Text`
   box-shadow: 15px 15px 15px rgba(5, 0, 0, 1);
   border-radius: 15px;
   width: 100px;
-  color: ${({theme}) => theme.colors.background_primary};
+  color: ${({theme}) => theme.colors.title};
   margin-left: auto;
   text-align: center;
   position: absolute;
