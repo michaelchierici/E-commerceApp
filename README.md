@@ -8,13 +8,13 @@
 
 <h2>Project Screenshots:</h2>
 <div>
-<img src="https://i.ibb.co/6ss1Mgz/Screenshot-20220911-213636.png" alt="project-screenshot" width="400" height="800/">
+<img src="https://i.ibb.co/6ss1Mgz/Screenshot-20220911-213636.png" alt="project-screenshot" width="380" height="800/">
 
-<img src="https://i.ibb.co/qMzpV1G/Screenshot-20220911-213504.png" alt="project-screenshot" width="400" height="800/">
+<img src="https://i.ibb.co/qMzpV1G/Screenshot-20220911-213504.png" alt="project-screenshot" width="380" height="800/">
 
-<img src="https://i.ibb.co/xmXm04n/Screenshot-20220911-213559.png" alt="project-screenshot" width="400" height="800/">
+<img src="https://i.ibb.co/xmXm04n/Screenshot-20220911-213559.png" alt="project-screenshot" width="380" height="800/">
 
-<img src="https://i.ibb.co/RgZSWcL/Screenshot-20220911-213625.png" alt="project-screenshot" width="400" height="800/">
+<img src="https://i.ibb.co/RgZSWcL/Screenshot-20220911-213625.png" alt="project-screenshot" width="380" height="800/">
 </div>
   
   
