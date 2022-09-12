@@ -50,7 +50,7 @@ git clone https://github.com/michaelchierici/productsAPI
 
 <p>4. In react native app go to api.ts file change the address to your IP</p>
 
-<p>5. At API project run yarn to install packages and then run yarn dev to run the server</p>
+<p>5. At API project run yarn to install packages, don't forget to configure .env file, follow the instructions that's in the .env file and then run yarn dev to run the server API</p>
 
 <p>6. You need to create the products to the app and to do this go to products.txt file at the root of this project, copy and paste the text and go to create route using insomnia or postman and then send the request to create products(is a private route and need to be logged as well).</p>
 
