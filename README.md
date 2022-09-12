@@ -52,6 +52,6 @@ git clone https://github.com/michaelchierici/productsAPI
 
 <p>5. At API project run yarn to install packages and then run yarn dev to run the server</p>
 
-<p>6. You need to create the products to the app and to do this download the file that is included in this project copy and paste the text and go to create route using insomnia or postman and then send the request to create projects(is private route and need to be logged as well).</p>
+<p>6. You need to create the products to the app and to do this go to products.txt file at the root of this project, copy and paste the text and go to create route using insomnia or postman and then send the request to create products(is a private route and need to be logged as well).</p>
 
 <p>7. At the project app run yarn start create your account and login and enjoy the app!</p>
