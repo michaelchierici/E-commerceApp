@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {createContext, ReactNode, useContext, useState} from 'react';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {api} from '../services/api';
 import {showToast} from '../util/toasts';
 import {Token} from '../services/token';
@@ -20,7 +18,7 @@ export interface User {
 interface AuthContextData {
   user: User;
   signOut(): Promise<void>;
-  loading: boolean;
+  loading?: boolean;
   login(name: any, password: any, params: any): Promise<any>;
 }
 
@@ -28,7 +26,6 @@ const AuthContext = createContext({} as AuthContextData);
 
 export function AuthProvider({children}: AuthProps) {
   const [user, setUser] = useState<User>({} as User);
-  const [loading, setLoading] = useState(false);
 
   const userStorageKey = '@storage/user';
 
@@ -40,10 +37,7 @@ export function AuthProvider({children}: AuthProps) {
       const response = await api.post(`/api/${params}`, name, password);
 
       params === 'trainer'
-        ? showToast(
-            'conta criada com sucesso, pressione em voltar e faça login',
-            'info',
-          )
+        ? showToast('conta criada, volte e faça seu login', 'success')
         : null;
 
       const {data} = response;
@@ -69,7 +63,7 @@ export function AuthProvider({children}: AuthProps) {
   }
 
   return (
-    <AuthContext.Provider value={{user, signOut, loading, login}}>
+    <AuthContext.Provider value={{user, signOut, login}}>
       {children}
     </AuthContext.Provider>
   );

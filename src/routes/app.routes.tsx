@@ -6,14 +6,12 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Platform} from 'react-native';
 import {useTheme} from 'styled-components/native';
 import {IconButton} from 'react-native-paper';
-import {useAuth} from '../hooks/useAuth';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
 const AppRoutes = () => {
   const theme = useTheme();
-  const {loading} = useAuth();
 
   return (
     <Navigator
@@ -27,7 +25,6 @@ const AppRoutes = () => {
           paddingVertical: Platform.OS === 'ios' ? 20 : 0,
           backgroundColor: theme.colors.background_primary,
           width: '100%',
-          display: loading ? 'none' : 'flex',
         },
       }}>
       <Screen
