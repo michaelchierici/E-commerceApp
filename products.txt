@@ -1,0 +1,50 @@
+{
+    "name": "Nike Air Force",
+          "price": 300,
+          "ammount": 1,
+          "img": "https://o.remove.bg/downloads/a3c381fe-c18b-4d8a-b6f6-2d384ad60d67/pngwing.com-removebg-preview.png",
+          "type": ""
+        
+}
+
+
+{
+    "name": "Nike Air Force Pro Max",
+          "price": 320,
+          "ammount": 1,
+          "img": "https://o.remove.bg/downloads/cb741ade-d001-4828-9235-f99757411146/shoe-transparent-background-12-removebg-preview.png",
+          "type": ""
+        
+}
+
+
+{
+    "name": "Nike Air Force Power Up",
+          "price": 280,
+          "ammount": 1,
+          "img": "https://o.remove.bg/downloads/06144ebe-fe8d-4185-a6db-27d43613fb4e/Nike-Shoes-Air-Max-PNG-Images-removebg-preview.png",
+          "type": ""
+        
+}
+
+
+{
+    "name": "Nike Air Force Max",
+          "price": 340,
+          "ammount": 1,
+          "img": "https://o.remove.bg/downloads/f4f84e79-f3de-4281-9015-3176a62659de/png-transparent-shoe-nike-free-air-force-nike-shoes-image-file-formats-fashion-outdoor-shoe-removebg-preview.png",
+          "type": ""
+        
+}
+
+
+{
+    "name": "Nike Air Force Titan",
+          "price": 350,
+          "ammount": 1,
+          "img": "https://o.remove.bg/downloads/ebb7fa5b-cac7-4e8e-83eb-ea7cad789806/shoe-removebg-preview.png",
+          "type": ""
+        
+}
+
+
